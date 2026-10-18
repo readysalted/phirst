@@ -156,7 +156,7 @@ $rows = [
         'acf_fc_layout' => 'blockImageText',
         'imagePosition' => 'left',
         'image' => $images['webinar.png'],
-        'contentHtml' => '<p class="eyebrow">Latest</p><h2>Webinar, Economic Evaluation</h2><p>' . $lorem . ' et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p><p><a class="button" href="https://phirst.nihr.ac.uk/phirst-webinar-meaningful-and-pragmatic-health-economics-in-phirst-evaluations/">Register Now</a></p>',
+        'contentHtml' => '<p class="eyebrow">Latest</p><h2>Webinar, Economic Evaluation</h2><p>' . $lorem . ' et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p><p><a class="button" href="https://www.eventbrite.co.uk/e/meaningful-and-pragmatic-health-economics-in-phirst-evaluations-tickets-2001873710156">Register Now</a></p>',
         'options' => ['displayStyle' => 'phirstLatest', 'theme' => 'glove-blue'],
     ],
     [
