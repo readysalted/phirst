@@ -1,0 +1,20 @@
+{% extends 'templates/_document.twig' %}
+
+{% block content %}
+  {% set archiveTitle = function('is_home')
+    ? post.title
+    : (function('single_term_title', '', false) ?: function('get_the_archive_title')) %}
+  {% set pageHero = function('is_home') ? post.meta('pageComponents')|first : null %}
+
+  {% if pageHero and pageHero.acf_fc_layout == 'BlockHero' %}
+    {{ renderComponent(pageHero) }}
+  {% else %}
+    {{ renderComponent('BlockHero', {
+      title: archiveTitle,
+      contentHtml: '',
+      image: null
+    }) }}
+  {% endif %}
+
+  {{ renderComponent('GridPostsArchive', {posts: posts}) }}
+{% endblock %}

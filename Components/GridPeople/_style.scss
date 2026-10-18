@@ -1,0 +1,197 @@
+flynt-component[name='GridPeople'] {
+  .peopleGrid-intro {
+    margin-block-end: 40px;
+    max-inline-size: 800px;
+  }
+
+  .peopleGrid-directory {
+    background: var(--color-background-secondary);
+    border-radius: 16px;
+    margin-block-end: 32px;
+    padding-block: 24px;
+    padding-inline: 24px;
+  }
+
+  .peopleGrid-controls {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: minmax(0, 2fr) minmax(210px, 1fr);
+  }
+
+  .peopleGrid-field label {
+    display: block;
+    font-weight: 700;
+    margin-block-end: 8px;
+  }
+
+  .peopleGrid-field input,
+  .peopleGrid-field select {
+    background-color: var(--color-background);
+    border-color: var(--color-border);
+    border-radius: 8px;
+    inline-size: 100%;
+  }
+
+  .peopleGrid-filterButtons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-block-start: 20px;
+  }
+
+  .peopleGrid-filter {
+    background: transparent;
+    border: 1px solid var(--color-text);
+    border-radius: 999px;
+    color: var(--color-text);
+    cursor: pointer;
+    font: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    padding-block: 8px;
+    padding-inline: 16px;
+  }
+
+  .peopleGrid-filter span {
+    font-weight: 400;
+    margin-inline-start: 4px;
+  }
+
+  .peopleGrid-filter:hover,
+  .peopleGrid-filter:focus-visible,
+  .peopleGrid-filter.is-active {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    color: var(--nihr-navy);
+  }
+
+  .peopleGrid-filterSelect {
+    display: none;
+    margin-block-start: 20px;
+  }
+
+  .peopleGrid-results {
+    color: var(--color-text-muted);
+    font-size: 15px;
+    margin-block: 18px 0;
+    margin-inline: 0;
+  }
+
+  .peopleGrid-items {
+    display: grid;
+    gap: 24px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .peopleGrid-card {
+    background: var(--color-background);
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgb(0 0 0 / 10%);
+    overflow: hidden;
+  }
+
+  .peopleGrid-card > a {
+    block-size: 100%;
+    color: currentcolor;
+    display: block;
+    text-decoration: none;
+  }
+
+  .peopleGrid-image {
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+  }
+
+  .peopleGrid-image img {
+    block-size: 100%;
+    inline-size: 100%;
+    object-fit: cover;
+    transition: transform 200ms ease;
+  }
+
+  .peopleGrid-card a:hover img {
+    transform: scale(1.03);
+  }
+
+  .peopleGrid-content {
+    padding-block: 20px;
+    padding-inline: 20px;
+  }
+
+  .peopleGrid-content h2 {
+    font-size: 22px;
+    margin-block: 0 8px;
+    margin-inline: 0;
+  }
+
+  .peopleGrid-content p {
+    margin-block: 0;
+    margin-inline: 0;
+  }
+
+  .peopleGrid-role {
+    color: var(--color-text-muted);
+    line-height: 1.45;
+  }
+
+  .peopleGrid-empty {
+    background: var(--color-background-secondary);
+    border-radius: 12px;
+    margin-block: 0;
+    padding-block: 24px;
+    padding-inline: 24px;
+    text-align: center;
+  }
+
+  @media (max-width: 1023px) {
+    .peopleGrid-items {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 767px) {
+    .peopleGrid-directory {
+      padding-block: 20px;
+      padding-inline: 20px;
+    }
+
+    .peopleGrid-controls {
+      grid-template-columns: 1fr;
+    }
+
+    .peopleGrid-filterButtons {
+      display: none;
+    }
+
+    .peopleGrid-filterSelect {
+      display: block;
+    }
+
+    .peopleGrid-items {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 479px) {
+    .peopleGrid-items {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+.personProfile-layout {
+  display: grid;
+  gap: 48px;
+  padding-block: 60px;
+}
+
+.personProfile-portrait img {
+  border-radius: 16px;
+  inline-size: 100%;
+}
+
+@media (min-width: 768px) {
+  .personProfile-layout {
+    grid-template-columns: minmax(240px, 360px) minmax(0, 1fr);
+  }
+}

@@ -1,0 +1,80 @@
+{% extends 'templates/_document.twig' %}
+
+{% block content %}
+  <article class="projectSingle">
+    <header>
+      {{ renderComponent('BlockPostHeader', {type: 'custom', title: post.title}) }}
+    </header>
+    {% if post.thumbnail %}
+      <div class="projectSingle-featuredImage">
+        {{ renderComponent('BlockImage', {image: post.thumbnail, options: {size: 'wide'}, noComponentSpacing: true}) }}
+      </div>
+    {% endif %}
+    {% if post.meta('projectLead') or post.meta('projectTeam') %}
+      <section class="container projectSingle-meta" data-size="medium" aria-label="{{ function('__', 'Project team', 'flynt') }}">
+        {% if post.meta('projectLead') %}
+          <p><strong>{{ function('__', 'Lead researcher:', 'flynt') }}</strong> {{ post.meta('projectLead') }}</p>
+        {% endif %}
+        {% if post.meta('projectTeam') %}
+          <div class="projectSingle-team"><strong>{{ function('__', 'Research team:', 'flynt') }}</strong> {{ post.meta('projectTeam')|e('wp_kses_post') }}</div>
+        {% endif %}
+      </section>
+    {% endif %}
+    {% if post.meta('projectSummary') %}
+      {{ renderComponent({
+        'acf_fc_layout': 'BlockWysiwyg',
+        'contentHtml': '<h2>' ~ function('__', 'Plain English summary', 'flynt') ~ '</h2>' ~ post.meta('projectSummary'),
+        'options': {'theme': 'putty'}
+      }) }}
+    {% endif %}
+    <div class="projectSingle-content">
+      {% for component in post.meta('pageComponents') %}
+        {{ renderComponent(component) }}
+      {% endfor %}
+    </div>
+    {% if post.res_accordion_panels %}
+      {{ renderComponent({
+        'acf_fc_layout': 'AccordionDefault',
+        'preContentHtml': post.res_accordion_heading ? '<h2>' ~ post.res_accordion_heading ~ '</h2>' : '',
+        'accordionPanels': post.res_accordion_panels
+      }) }}
+    {% endif %}
+    {% if post.res_posts %}
+      <div class="container" data-size="medium">
+      {% if post.res_label %}
+        <h2 style="color: #1C285E;">{{ post.res_label }}</h2>
+      {% endif %}
+        {% set transformedItems = [] %}
+        {% for relatedPost in post.res_posts %}
+          {% set transformedItems = transformedItems|merge([{
+            'image': relatedPost.thumbnail ? {
+              'src': relatedPost.thumbnail.src('medium_large'),
+              'alt': relatedPost.thumbnail.alt ?: relatedPost.title
+            } : null,
+            'contentHtml': '<h3>' ~ relatedPost.title ~ '</h3>',
+            'link': {
+              'url': relatedPost.link,
+              'target': '_self'
+            }
+          }]) %}
+        {% endfor %}
+      
+        {{ renderComponent({
+          'acf_fc_layout': 'GridImageText',
+          'options': {
+            'maxColumns': 2,
+          },
+          'items': transformedItems
+        }) }}
+      </div>
+    {% endif %}
+    {% if post.res_cta_text %}
+    <div class="container" data-size="medium">
+      <div class="resources-cta">
+        <h3>{{ post.res_cta_label }}</h3>
+        {{ post.res_cta_text }}
+      </div>
+    </div>
+    {% endif %}
+  </article>
+{% endblock %}
