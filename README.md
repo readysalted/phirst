@@ -21,3 +21,14 @@ npm run build:production
 Compiled `dist/` assets are tracked for deployment. Dependencies, credentials and the WordPress database are excluded from Git.
 
 See [PROJECT_CONTEXT.md](PROJECT_CONTEXT.md) for implementation and content setup.
+
+## Content setup
+
+On a fresh WordPress database, activate ACF Pro and PHIRST, then run:
+
+```sh
+wp eval-file tools/seed-phirst-site.php
+wp eval-file tools/import-phirst-homepage.php
+```
+
+The initial seed preserves an already configured Home. Review [PROJECT_CONTEXT.md](PROJECT_CONTEXT.md) before rerunning setup over edited content. [COMPONENTS.md](COMPONENTS.md) inventories the existing component library.

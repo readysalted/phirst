@@ -1,9 +1,101 @@
 # PHIRST project context
 
-- Theme: `app/public/wp-content/themes/phirst`
-- Local URL: http://phirst.local/
-- Repository: git@github-readysalted:readysalted/phirst.git
-- New project with independent Git history. Reuses components from the PRU Flynt theme.
-- Approved homepage: Figma NIHR PHIRST DEV, page 2026.
-- Stack: Flynt 2, Timber 2, Twig 3, ACF Pro, Vite 5.
-- Never store credentials, license keys or database exports in the repository.
+Last verified: 2026-10-18.
+
+## Project
+
+- Theme and repository root: `app/public/wp-content/themes/phirst` inside the Local site.
+- Site: http://phirst.local/
+- Repository: git@github-readysalted:readysalted/phirst.git, branch `main`.
+- Independent Git history, initialized for PHIRST. PRU Git metadata and old migration scripts are outside this repository.
+- Stack: Flynt 2.1.1, Timber 2, Twig 3, ACF Pro, Vite 5, PHP >=8.1 and Node >=20.
+- The existing library contains 59 component folders; see [COMPONENTS.md](COMPONENTS.md). Reuse existing components first. Add a component only when the existing library cannot express the required block.
+- Do not commit credentials, ACF license keys, WordPress core/plugins, database exports, `vendor`, `node_modules` or `dist/hot`.
+
+## Approved design
+
+Figma file: https://www.figma.com/design/Ige5obtBeQJly4vc31jyTA/NIHR-PHIRST-DEV
+
+The approved Home is `3402:10818` (Homepage) on the `2026` page (`3402:91`). The originally supplied deep link (`3404:12115`) is an accordion on an evaluation detail example, rather than the Home frame.
+
+Design colors: Navy `#1C285E`, Brand Blue `#193E72`, Blue Flame `#0051C2`, Glove Blue `#C7E9FF`, Lilac `#C4C5FF`, Putty `#FAF4EB`, Slate `#2D2D2D`, Coral `#FC5D5D`. Headings use local Archia; body/navigation use Inclusive Sans; editorial card/news copy uses Lato.
+
+Approved assets are in `assets/images/phirst/`; `figma-assets.json` records their Figma layer IDs without temporary download URLs. Home content images are real WordPress Media Library attachments. Cropped logo and newsletter artwork preserve the crop shown in Figma.
+
+## Home content
+
+Home is page ID 5 on the initial local database and contains ten ACF Flexible Content rows:
+
+1. `BlockImageTextHero` / `homepage`
+2. `BlockFeedbackBanner`
+3. `BlockImageText` / `phirstLatest`
+4. `BlockWysiwyg` / `phirstIntro`
+5. `ListLogos` / `homepagePartners`
+6. `BlockVideoOembed` / `phirstVideo`
+7. `GridImageText` / `phirstCards`
+8. `BlockPostTabs` / `phirstQuotes`
+9. `BlockPostTabs` / `homepage`
+10. `BlockMailingList` / `homepage`
+
+No new frontend components were needed. PHIRST variants extend the existing components; their design overrides are in `assets/styles/_phirst.scss`.
+
+There are eleven editable image fields directly on Home, plus the news posts' Featured Images. Twelve approved Figma content assets were imported, including the first news slide's approved image.
+
+There are three news posts with Featured Images and three testimonials. The first news slide retains the approved Figma artwork/copy. The news feed uses the PHIRST News category, has a pinned first post and requests three slides. Additional news slides use short summaries and link to the original full stories via the editable `externalStoryLink` ACF field. Two additional testimonials are brief excerpts from the current PHIRST site.
+
+The video is the actual PHIRST introduction (`ZfOqd7JJCrY`) and loads only after Play. Newsletter signup links to the existing PHIRST signup form. Footer social links point to the verified PHIRST YouTube channel and LinkedIn page.
+
+## Pages and menus
+
+Thirteen published pages: Home plus twelve empty pages: Evaluations, Health & Care Professionals, Public Partnerships, Impact, About us, Contact, News & Events, Site Map, Privacy Policy, Cookie Policy, Terms and Accessibility.
+
+Both navigation locations use the PHIRST Main menu: Evaluations, Health & Care Professionals, Public Partnerships, Impact and About us. Contact is the header CTA. Footer options contain links to the actual pages.
+
+The inherited global newsletter toggle is explicitly off on seeded pages; Home has its own newsletter row. Keep it off to avoid a duplicate section. The WordPress Sample Page and Hello world post are in Trash.
+
+WordPress uses a static Home, `/%postname%/` permalinks, Europe/London and disabled search indexing for local development.
+
+## Development and setup
+
+```sh
+composer install
+npm install
+npm start
+```
+
+`vite.config.js` points to `http://phirst.local/`. Vite is served on `http://localhost:5173/`; open the WordPress URL. Its CORS origin is restricted to the local WordPress origin. `dist/hot` is ignored by Git.
+
+Production:
+
+```sh
+npm run build:production
+```
+
+Use `npm run build:production -- --emptyOutDir false` when compiling while the dev server is intentionally running, so its `dist/hot` file remains present. Tracked `dist` assets and the Vite manifest are required for deployment. PHP dependencies are installed separately from `composer.lock`.
+
+On a fresh WordPress database, activate ACF Pro and PHIRST, then run from the theme directory with WP-CLI:
+
+```sh
+wp eval-file tools/seed-phirst-site.php
+wp eval-file tools/import-phirst-homepage.php
+```
+
+The seed imports Figma assets, creates empty pages/menus/options and populates Home. It preserves an already seeded Home; `reset-home` explicitly restores the original design content. The homepage importer reuses existing source posts and adds the news feed and testimonial excerpts. Do not rerun either command over later editorial work without reviewing what it updates. WordPress content/uploads are not stored in Git.
+
+ACF Pro 6.8.10 is installed and active locally. A separate license key was not copied from PRU; enter the PHIRST license under ACF Updates for automatic plugin updates.
+
+## Verification
+
+- Production Vite build passed, including the shared Swiper components.
+- Targeted Stylelint, JavaScript Standard and PHPCS checks passed for the new/changed implementation.
+- Composer configuration validates; Composer audit reports no advisories after updating Twig and PHPCS. Production npm dependencies report zero vulnerabilities after the Swiper update.
+- The inherited development tooling still has npm audit findings. A broad toolchain migration is outside this homepage implementation.
+- Browser QA covered 320, 390, 768, 1024, 1200 and 1728 px without horizontal page overflow.
+- Checked mobile menu open/close and Escape, card navigation, carousel controls and the deferred YouTube iframe. Inactive slides are inert; carousel IDs are unique per component.
+- No browser console errors were captured during final Home QA.
+- Logged into WordPress and successfully saved Home through the ACF editor; checked the ten rows and real image previews.
+- Verified all published pages and image references; placeholders remain empty as requested.
+
+## Content still supplied as placeholders
+
+The approved design includes Lorem ipsum in the Latest feature, audience cards, newsletter and footer, plus a sample footer address/telephone. These placeholders are retained for review. Replace them with approved content before launch. Legal pages and the remaining pages are intentionally empty. Full legacy-site migration and production deployment are not part of this initial Home implementation.
