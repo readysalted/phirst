@@ -49,6 +49,9 @@ export default defineConfig(({ mode }) => {
     },
     plugins: [flynt({ dest, host }), FullReload(watchFiles)],
     server: {
+      cors: {
+        origin: new URL(wordpressHost).origin
+      },
       https: isSecure
         ? {
             key: fs.readFileSync(env.VITE_DEV_SERVER_KEY),

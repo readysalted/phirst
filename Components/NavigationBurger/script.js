@@ -12,6 +12,7 @@ export default function (el) {
 
   const menuButtonClickDelegate = delegate('[data-ref="menuButton"]', onMenuButtonClick)
   el.addEventListener('click', menuButtonClickDelegate)
+  el.addEventListener('keydown', onKeydown)
 
   onBreakpointChange()
 
@@ -32,8 +33,25 @@ export default function (el) {
   }
 
   function onBreakpointChange () {
+    if (isDesktopMediaQuery.matches && isMenuOpen) {
+      closeMenu()
+    }
     if (!isDesktopMediaQuery.matches) {
       setScrollPaddingTop()
+    }
+  }
+
+  function closeMenu () {
+    isMenuOpen = false
+    refs.menuButton.setAttribute('aria-expanded', 'false')
+    el.removeAttribute('data-status')
+    enableBodyScroll(refs.menu)
+  }
+
+  function onKeydown (event) {
+    if (event.key === 'Escape' && isMenuOpen) {
+      closeMenu()
+      refs.menuButton.focus()
     }
   }
 
@@ -47,6 +65,8 @@ export default function (el) {
   return () => {
     isDesktopMediaQuery.removeEventListener('change', onBreakpointChange)
     el.removeEventListener('click', menuButtonClickDelegate)
+    el.removeEventListener('keydown', onKeydown)
+    enableBodyScroll(refs.menu)
   }
 }
 

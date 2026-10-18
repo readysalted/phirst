@@ -43,6 +43,7 @@ export default function (el) {
       const isActive = index === currentIndex
       content.classList.toggle('active', isActive)
       content.setAttribute('aria-hidden', String(!isActive))
+      content.inert = !isActive
     })
 
     tabLinks.forEach(function (link, index) {
@@ -84,6 +85,7 @@ export default function (el) {
 
   function startAutoplay () {
     if (tabContent.length <= 1 || autoplayId || prefersReducedMotion.matches || document.hidden) return
+    if (sliderRoot.matches(':hover') || el.querySelector('.tab:hover') || el.matches(':focus-within')) return
     autoplayId = setInterval(nextSlide, AUTOPLAY_DELAY)
   }
 

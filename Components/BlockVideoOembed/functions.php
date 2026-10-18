@@ -82,6 +82,7 @@ function getACFLayout(): array
                         'type' => 'select',
                         'choices' => [
                             'default' => __('Default', 'flynt'),
+                            'phirstVideo' => __('PHIRST Homepage Video', 'flynt'),
                             'resources' => __('Resources featured video', 'flynt'),
                         ],
                         'default_value' => 'default',

@@ -4,12 +4,12 @@
     {% if contentType %}
       <div class="post-tabs" role="region" aria-roledescription="carousel" aria-label="{{ text ?: 'Latest News and Events' }}" {{ relationship|length > 1 ? 'tabindex="0"' }}>
         {% for value in relationship %}
-          <div id="tab-{{ loop.index }}-quote" class="tabcontent {{ loop.index == 1 ? 'active' : '' }}" role="group" aria-roledescription="slide" aria-label="{{ loop.index }} of {{ relationship|length }}" data-tab-content>
+          <div id="{{ uuid }}-{{ loop.index }}" class="tabcontent {{ loop.index == 1 ? 'active' : '' }}" role="group" aria-roledescription="slide" aria-label="{{ loop.index }} of {{ relationship|length }}" data-tab-content>
             <h2>{{ text }}</h2>
             <div class="tab-wrap">
               {% if value.thumbnail.src %}
                 <div class="tab-image-wrap">
-                  <img class="tab-image" src="{{ value.thumbnail.src }}" alt="Latest news and events"/>
+                  <img class="tab-image" src="{{ value.thumbnail.src }}" alt="{{ value.thumbnail.alt|e }}"/>
                 </div>
               {% endif %}
               <div class="tab-text-wrap">
@@ -21,12 +21,12 @@
 
                 {% if value.post_content %}
                   <div class="tab-content">
-                    {{ value.excerpt.read_more(false) }}
+                    {{ value.excerpt.length(100).read_more(false) }}
                   </div>
                 {% endif %}
 
                 {% if value.link %}
-                  <a class="tab-link{{ options.displayStyle == 'homepage' ? '' : ' button' }}" href="{{ value.link }}">
+                  <a class="tab-link{{ options.displayStyle == 'homepage' ? '' : ' button' }}" href="{{ (value.meta('externalStoryLink') ?: value.link)|e('esc_url') }}">
                     {% if options.displayStyle == 'homepage' %}
                       <img class="tab-link-icon" src="{{ homepageCtaIcon }}" alt="" aria-hidden="true">
                       <span class="tab-link-label">{{ buttonLabel|default('Read the full news story') }}</span>
@@ -43,15 +43,16 @@
       {% if relationship|length > 1 %}
       <div class="tab">
         {% for value in relationship %}
-          <button class="tab__link {{ loop.index == 1 ? 'active' : '' }}" type="button" data-index="tab-{{ loop.index }}-quote"
-                  aria-label="Show slide {{ loop.index }} of {{ relationship|length }}" aria-controls="tab-{{ loop.index }}-quote" data-tab-link></button>
+          <button class="tab__link {{ loop.index == 1 ? 'active' : '' }}" type="button" data-index="{{ uuid }}-{{ loop.index }}"
+                  aria-label="Show slide {{ loop.index }} of {{ relationship|length }}" aria-controls="{{ uuid }}-{{ loop.index }}" data-tab-link></button>
         {% endfor %}
       </div>
       {% endif %}
     {% else %}
-      <div class="post-tabs quotes">
+      <div class="post-tabs quotes" role="region" aria-roledescription="carousel" aria-label="Testimonials" {{ quotes|length > 1 ? 'tabindex="0"' }}>
       {% for quote in quotes %}
-          <div id="tab-{{ loop.index }}-quote" class="tabcontent quote {{ loop.index == 1 ? 'active' : '' }}" data-tab-content>
+          <div id="{{ uuid }}-{{ loop.index }}" class="tabcontent quote {{ loop.index == 1 ? 'active' : '' }}" data-tab-content>
+              {% if options.displayStyle == 'phirstQuotes' %}<div class="quote-mark"><img src="{{ quoteIcon }}" alt="" aria-hidden="true"></div>{% endif %}
               <div class="tab-text-wrap quote-wrap">
                   <div class="tab-content">
                     {{ quote.quoteHtml|e('wp_kses_post') }}
@@ -63,8 +64,8 @@
       {% if quotes|length > 1 %}
       <div class="tab">
         {% for quote in quotes %}
-          <button class="tab__link {{ loop.index == 1 ? 'active' : '' }}" type="button" data-index="tab-{{ loop.index }}-quote"
-                  aria-label="Show quote {{ loop.index }} of {{ quotes|length }}" aria-controls="tab-{{ loop.index }}-quote" data-tab-link></button>
+          <button class="tab__link {{ loop.index == 1 ? 'active' : '' }}" type="button" data-index="{{ uuid }}-{{ loop.index }}"
+                  aria-label="Show quote {{ loop.index }} of {{ quotes|length }}" aria-controls="{{ uuid }}-{{ loop.index }}" data-tab-link></button>
         {% endfor %}
       </div>
       {% endif %}

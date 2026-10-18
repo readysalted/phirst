@@ -1,5 +1,7 @@
 <figure data-ref="posterImage" class="figure">
-  {% if image.post_mime_type == 'image/svg+xml' %}
+  {% if displayStyle == 'phirstVideo' %}
+    <img class="figure-image" src="{{ image.src }}" width="{{ image.width }}" height="{{ image.height }}" alt="{{ image.alt|e }}" loading="lazy">
+  {% elseif image.post_mime_type == 'image/svg+xml' %}
     <img
       class="figure-image-svg lazyload"
       src="{{ placeholderImage(1280, 720, 'rgba(125, 125, 125, 0.1)') }}"

@@ -3,27 +3,27 @@
 /**
  * Use the public site as the destination for the login-page logo.
  */
-function pru_login_header_url(): string
+function phirst_login_header_url(): string
 {
     return home_url('/');
 }
-add_filter('login_headerurl', 'pru_login_header_url');
+add_filter('login_headerurl', 'phirst_login_header_url');
 
 /**
  * Keep the logo's accessible text aligned with the current site identity.
  */
-function pru_login_header_text(): string
+function phirst_login_header_text(): string
 {
-    return 'NIHR Policy Research Unit in Behavioural and Social Sciences';
+    return 'Public Health Intervention Responsive Studies Teams (PHIRST)';
 }
-add_filter('login_headertext', 'pru_login_header_text');
+add_filter('login_headertext', 'phirst_login_header_text');
 
 /**
- * Apply the current PRU branding to the WordPress login screen.
+ * Apply the current PHIRST branding to the WordPress login screen.
  */
-function pru_login_styles(): void
+function phirst_login_styles(): void
 {
-    $assetUrl = get_stylesheet_directory_uri() . '/assets/images/pru/';
+    $assetUrl = get_stylesheet_directory_uri() . '/assets/images/phirst/';
     ?>
     <style>
         body.login {
@@ -31,7 +31,7 @@ function pru_login_styles(): void
             background-color: #1c285e;
             background-image:
                 linear-gradient(rgba(28, 40, 94, 0.68), rgba(28, 40, 94, 0.82)),
-                url('<?php echo esc_url($assetUrl . 'hero.jpg'); ?>');
+                url('<?php echo esc_url($assetUrl . 'hero.png'); ?>');
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
@@ -58,11 +58,10 @@ function pru_login_styles(): void
         body.login #login h1 a {
             background-color: #fff;
             background-image:
-                url('<?php echo esc_url($assetUrl . 'nihr-logo.svg'); ?>'),
-                url('<?php echo esc_url($assetUrl . 'nihr-service-wordmark.svg'); ?>');
-            background-position: left 22px center, right 22px center;
+                url('<?php echo esc_url($assetUrl . 'phirst-wordmark.png'); ?>');
+            background-position: center;
             background-repeat: no-repeat;
-            background-size: 43% auto, 41% auto;
+            background-size: 85% auto;
             border-radius: 12px;
             box-shadow: 0 16px 40px rgba(10, 19, 54, 0.28);
             box-sizing: border-box;
@@ -163,8 +162,8 @@ function pru_login_styles(): void
             }
 
             body.login #login h1 a {
-                background-position: left 16px center, right 16px center;
-                background-size: 43% auto, 41% auto;
+                background-position: center;
+                background-size: 85% auto;
                 height: 72px;
             }
 
@@ -175,4 +174,4 @@ function pru_login_styles(): void
     </style>
     <?php
 }
-add_action('login_enqueue_scripts', 'pru_login_styles');
+add_action('login_enqueue_scripts', 'phirst_login_styles');

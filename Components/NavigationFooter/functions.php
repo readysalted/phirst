@@ -97,12 +97,12 @@ add_filter('Flynt/addComponentData?name=NavigationFooter', function (array $data
 
         if (str_contains($linkIdentity, 'youtube')) {
             $item['image'] = [
-                'src' => Asset::requireUrl('assets/images/pru/youtube.svg'),
+                'src' => Asset::requireUrl('assets/images/phirst/youtube.svg'),
                 'alt' => __('YouTube', 'flynt'),
             ];
         } elseif (str_contains($linkIdentity, 'linkedin')) {
             $item['image'] = [
-                'src' => Asset::requireUrl('assets/images/pru/linkedin.svg'),
+                'src' => Asset::requireUrl('assets/images/phirst/linkedin.svg'),
                 'alt' => __('LinkedIn', 'flynt'),
             ];
         }

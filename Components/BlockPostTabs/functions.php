@@ -7,8 +7,9 @@ use Flynt\Utils\Asset;
 use Timber\Timber;
 
 add_filter('Flynt/addComponentData?name=BlockPostTabs', function ($data) {
+    $data['uuid'] = wp_unique_id('phirst-carousel-');
     $data['contentType'] = $data['contentType'] ?? 1;
-    $data['homepageCtaIcon'] = Asset::requireUrl('assets/images/pru/news-link-art.png');
+    $data['homepageCtaIcon'] = Asset::requireUrl('assets/images/phirst/news-link.png');
 
     if (
         $data['contentType'] == 1
@@ -56,6 +57,8 @@ add_filter('Flynt/addComponentData?name=BlockPostTabs', function ($data) {
     } else {
         unset($data['relationship']);
     }
+
+    $data['quoteIcon'] = Asset::requireUrl('assets/images/phirst/quote.svg');
 
     return $data;
 });
@@ -282,6 +285,7 @@ function getACFFields()
                     'type' => 'select',
                     'choices' => [
                         'default' => __('Default', 'flynt'),
+                            'phirstQuotes' => __('PHIRST Testimonials', 'flynt'),
                         'homepage' => __('Homepage News Carousel', 'flynt'),
                     ],
                     'default_value' => 'default',

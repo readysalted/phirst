@@ -3,6 +3,7 @@
 
 # Local development dependencies and caches
 node_modules/
+dist/hot
 vendor/
 .vite/
 !dist/.vite/

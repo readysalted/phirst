@@ -135,6 +135,7 @@ function getACFLayout(): array
                         'type' => 'select',
                         'choices' => [
                             'default' => __('Default', 'flynt'),
+                            'phirstCards' => __('PHIRST Audience Cards', 'flynt'),
                             'homepageFeatures' => __('Homepage Feature Cards', 'flynt'),
                             'homepageProjects' => __('Homepage Project Cards', 'flynt'),
                             'resourceLinks' => __('Resources Link Cards', 'flynt'),

@@ -5,7 +5,7 @@
     {% endif %}
     <div class="video" data-size="{{ options.size }}" data-align="center">
       {% if posterImage %}
-        {% include 'Partials/_figure.twig' ignore missing with {image: posterImage} only %}
+        {% include 'Partials/_figure.twig' ignore missing with {image: posterImage, displayStyle: options.displayStyle} only %}
       {% endif %}
       <div data-ref="videoPlayer" class="video-player">
         {{ oembed }}

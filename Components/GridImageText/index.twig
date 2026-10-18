@@ -10,7 +10,7 @@
         <li class="item boxCard">
           {% if item.image %}
             <figure class="figure figure-desktop">
-              <img src="{{ item.image.src }}" alt="{{ item.image.alt }}" loading="lazy">
+              <img src="{{ item.image.src }}" alt="{{ item.image.alt|e }}" loading="lazy">
             </figure>
           {% endif %}
           {% if maxColumns == '1' and item.imageMobile %}
@@ -22,7 +22,7 @@
             {{ item.contentHtml|e('wp_kses_post') }}
           </div>
           {% if item.link.url %}
-            <a class="item-link" href="{{ item.link.url }}" target="{{ item.link.target }}" aria-label="Read more"></a>
+            <a class="item-link" href="{{ item.link.url }}" target="{{ item.link.target }}" aria-label="{{ item.link.title|e }}"></a>
           {% endif %}
         </li>
       {% endfor %}

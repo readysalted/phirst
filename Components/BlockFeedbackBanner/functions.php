@@ -5,7 +5,7 @@ namespace Flynt\Components\BlockFeedbackBanner;
 use Flynt\Utils\Asset;
 
 add_filter('Flynt/addComponentData?name=BlockFeedbackBanner', function (array $data): array {
-    $data['iconUrl'] = Asset::requireUrl('assets/images/home/feedback-smile.svg');
+    $data['iconUrl'] = Asset::requireUrl('assets/images/phirst/feedback.svg');
 
     if (empty($data['link']['url'])) {
         $data['link'] = [

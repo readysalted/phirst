@@ -56,6 +56,7 @@ function getACFLayout(): array
                         'type' => 'select',
                         'choices' => [
                             'default' => __('Default', 'flynt'),
+                            'phirstIntro' => __('PHIRST Introduction', 'flynt'),
                             'homepageIntro' => __('Homepage Introduction', 'flynt'),
                         ],
                         'default_value' => 'default',

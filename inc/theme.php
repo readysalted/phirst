@@ -133,7 +133,7 @@ add_action('template_redirect', function (): void {
 
     $page = getPersonGroupLandingPage(get_queried_object());
     if ($page) {
-        wp_safe_redirect(get_permalink($page), 301, 'NIHR PRU');
+        wp_safe_redirect(get_permalink($page), 301, 'PHIRST');
         exit;
     }
 }, 1);

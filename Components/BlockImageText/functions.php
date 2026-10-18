@@ -71,6 +71,7 @@ function getACFLayout(): array
                         'type' => 'select',
                         'choices' => [
                             'default' => __('Default', 'flynt'),
+                            'phirstLatest' => __('PHIRST Latest feature', 'flynt'),
                             'homepageFeature' => __('Homepage Feature', 'flynt'),
                             'portraitFeature' => __('Portrait Feature', 'flynt'),
                         ],
