@@ -13,7 +13,9 @@
                 <span class="visuallyHidden"> {{ item.link.title|e }} </span>
               </a>
             {% endif %}
-            {% if item.image.isThemeAsset %}
+            {% if options.displayStyle == 'homepagePartners' %}
+              <figure class="figure"><img class="figure-image" src="{{ item.image.src|e('esc_url') }}" width="{{ item.image.width }}" height="{{ item.image.height }}" alt="{{ item.image.alt|e }}" loading="lazy" decoding="async" draggable="false"></figure>
+            {% elseif item.image.isThemeAsset %}
               <figure class="figure"><img class="figure-image" src="{{ item.image.src }}" alt="{{ item.image.alt|e }}" loading="lazy"></figure>
             {% else %}
               {% include 'Partials/_image.twig' with {image: item.image, link: item.link, type: options.card} only %}

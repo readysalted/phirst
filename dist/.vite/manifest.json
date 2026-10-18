@@ -90,7 +90,7 @@
     ]
   },
   "Components/ListLogos/script.js": {
-    "file": "assets/script-0BS1LgjH.js",
+    "file": "assets/script-COguXN2F.js",
     "name": "script",
     "src": "Components/ListLogos/script.js",
     "isDynamicEntry": true
@@ -335,6 +335,42 @@
     "file": "assets/nihr-logo-CtojXYyP.png",
     "src": "assets/images/phirst/nihr-logo.png"
   },
+  "assets/images/phirst/partners/bristol.svg": {
+    "file": "assets/bristol-DNU1S-i-.svg",
+    "src": "assets/images/phirst/partners/bristol.svg"
+  },
+  "assets/images/phirst/partners/fuse.svg": {
+    "file": "assets/fuse-CYQ3N6wF.svg",
+    "src": "assets/images/phirst/partners/fuse.svg"
+  },
+  "assets/images/phirst/partners/glasgow.png": {
+    "file": "assets/glasgow-KMipZE32.png",
+    "src": "assets/images/phirst/partners/glasgow.png"
+  },
+  "assets/images/phirst/partners/hertfordshire.svg": {
+    "file": "assets/hertfordshire-BedY_-TQ.svg",
+    "src": "assets/images/phirst/partners/hertfordshire.svg"
+  },
+  "assets/images/phirst/partners/lilac.svg": {
+    "file": "assets/lilac-KORBfyz-.svg",
+    "src": "assets/images/phirst/partners/lilac.svg"
+  },
+  "assets/images/phirst/partners/lsbu.svg": {
+    "file": "assets/lsbu-B0OXEOId.svg",
+    "src": "assets/images/phirst/partners/lsbu.svg"
+  },
+  "assets/images/phirst/partners/northumbria.png": {
+    "file": "assets/northumbria-BLPTgE79.png",
+    "src": "assets/images/phirst/partners/northumbria.png"
+  },
+  "assets/images/phirst/partners/nottingham.svg": {
+    "file": "assets/nottingham-DAVnrsiX.svg",
+    "src": "assets/images/phirst/partners/nottingham.svg"
+  },
+  "assets/images/phirst/partners/phresh.png": {
+    "file": "assets/phresh-C4_0h9jD.png",
+    "src": "assets/images/phirst/partners/phresh.png"
+  },
   "assets/images/phirst/partnerships.png": {
     "file": "assets/partnerships-NgRpToSc.png",
     "src": "assets/images/phirst/partnerships.png"
@@ -452,7 +488,7 @@
     "src": "assets/images/wp-admin-brand.jpg"
   },
   "assets/main.js": {
-    "file": "assets/main-gQplSIbt.js",
+    "file": "assets/main-C3jsDgW_.js",
     "name": "main",
     "src": "assets/main.js",
     "isEntry": true,
@@ -476,7 +512,7 @@
     ]
   },
   "assets/main.scss": {
-    "file": "assets/main-DQgw9zZo.css",
+    "file": "assets/main-D4koeq8N.css",
     "src": "assets/main.scss",
     "isEntry": true
   },

@@ -293,36 +293,6 @@ flynt-component[name='ListLogos'][data-display-style='homepagePartners'] {
   .items {
     column-gap: 45px;
   }
-
-  .item:first-child,
-  .item:first-child .figure-image {
-    inline-size: 165px;
-    max-inline-size: 165px;
-  }
-
-  .item:nth-child(3) .figure-image {
-    inline-size: 158px;
-    max-inline-size: 158px;
-  }
-
-  .item:nth-child(4) .figure-image {
-    inline-size: 156px;
-  }
-
-  .item:nth-child(5) .figure {
-    block-size: 46px;
-    display: block;
-    inline-size: 52px;
-    overflow: hidden;
-  }
-
-  .item:nth-child(5) .figure-image {
-    block-size: 46px;
-    inline-size: 155px;
-    max-inline-size: none;
-    object-fit: cover;
-    object-position: left;
-  }
 }
 
 flynt-component[name='BlockVideoOembed'][data-display-style='phirstVideo'] {

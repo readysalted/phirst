@@ -6,4 +6,5 @@
 - Implement the approved Figma homepage as ten editable ACF component rows.
 - Add PHIRST branding, responsive layouts, menu, empty pages and repeatable content setup.
 - Populate news and testimonial carousels from the existing PHIRST site.
+- Replace the partner artwork with nine editable original logos from the legacy site and support scrolling by touch, mouse, keyboard and the progress track.
 - Update Twig, PHP tooling, Swiper and the Vite 5 patch release; verify frontend and editor behavior.

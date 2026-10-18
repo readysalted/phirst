@@ -16,6 +16,7 @@ if (!function_exists('update_field') || !function_exists('acf_add_local_field_gr
 require_once ABSPATH . 'wp-admin/includes/image.php';
 require_once ABSPATH . 'wp-admin/includes/file.php';
 require_once ABSPATH . 'wp-admin/includes/media.php';
+require_once __DIR__ . '/phirst-partner-assets.php';
 
 function phirstSeedPage(string $slug, string $title): int
 {
@@ -105,11 +106,6 @@ if (get_post_meta($home, '_phirst_seeded', true) && !in_array('reset-home', $arg
 $imageSpecs = [
     'hero.png' => 'Public health researchers discussing their work at a meeting',
     'webinar.png' => 'Economic evaluation: balancing health, travel and public investment',
-    'fuse.png' => 'Fuse – Centre for Translational Research in Public Health',
-    'newcastle.png' => 'Newcastle University',
-    'bristol.png' => 'University of Bristol',
-    'lilac.png' => 'PHIRST LiLaC',
-    'lsbu.png' => 'London South Bank University',
     'video-poster.png' => 'We are NIHR PHIRST – watch our introduction',
     'professionals.png' => 'Health and care professionals discussing research',
     'partnerships.png' => 'Members of the public sharing their views with researchers',
@@ -166,7 +162,7 @@ $rows = [
     ],
     [
         'acf_fc_layout' => 'listLogos',
-        'items' => array_map(static fn (string $file): array => ['image' => $images[$file]], ['fuse.png', 'newcastle.png', 'bristol.png', 'lilac.png', 'lsbu.png']),
+        'items' => phirstPartnerItems(),
         'options' => ['displayStyle' => 'homepagePartners', 'card' => 0],
     ],
     [

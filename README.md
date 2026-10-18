@@ -32,3 +32,5 @@ wp eval-file tools/import-phirst-homepage.php
 ```
 
 The initial seed preserves an already configured Home. Review [PROJECT_CONTEXT.md](PROJECT_CONTEXT.md) before rerunning setup over edited content. [COMPONENTS.md](COMPONENTS.md) inventories the existing component library.
+
+To update only the partner strip on an existing seeded site, run `wp eval-file tools/import-phirst-partners.php`. The nine original logos are bundled locally and imported as separate Media Library attachments.

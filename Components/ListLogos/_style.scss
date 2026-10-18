@@ -152,42 +152,22 @@ flynt-component[name='ListLogos'][data-display-style='homepagePartners'] {
   }
 
   .item {
-    flex: 0 0 auto;
-    max-inline-size: 156px;
+    block-size: 87px;
+    flex: 0 0 171px;
     scroll-snap-align: start;
   }
 
   .figure-image,
   .image {
-    inline-size: auto;
+    block-size: 100%;
+    inline-size: 100%;
     max-block-size: 87px;
-    max-inline-size: 156px;
+    max-inline-size: 171px;
     object-fit: contain;
   }
 
-  .item:nth-child(1) .figure-image,
-  .item:nth-child(1) .image {
-    inline-size: 138px;
-  }
-
-  .item:nth-child(2) .figure-image,
-  .item:nth-child(2) .image {
-    inline-size: 150px;
-  }
-
-  .item:nth-child(3) .figure-image,
-  .item:nth-child(3) .image {
-    inline-size: 156px;
-  }
-
-  .item:nth-child(4) .figure-image,
-  .item:nth-child(4) .image {
-    inline-size: 128px;
-  }
-
-  .item:nth-child(5) .figure-image,
-  .item:nth-child(5) .image {
-    inline-size: 78px;
+  .link:focus-visible {
+    outline-offset: -3px;
   }
 
   .partner-progress {
@@ -211,7 +191,7 @@ flynt-component[name='ListLogos'][data-display-style='homepagePartners'] {
       block-size: 100%;
       border-radius: inherit;
       display: block;
-      inline-size: 336px;
+      inline-size: 100%;
       transform: translateX(0);
       transition: transform 150ms ease-out;
     }

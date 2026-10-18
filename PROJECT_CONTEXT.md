@@ -20,7 +20,9 @@ The approved Home is `3402:10818` (Homepage) on the `2026` page (`3402:91`). The
 
 Design colors: Navy `#1C285E`, Brand Blue `#193E72`, Blue Flame `#0051C2`, Glove Blue `#C7E9FF`, Lilac `#C4C5FF`, Putty `#FAF4EB`, Slate `#2D2D2D`, Coral `#FC5D5D`. Headings use local Archia; body/navigation use Inclusive Sans; editorial card/news copy uses Lato.
 
-Approved assets are in `assets/images/phirst/`; `figma-assets.json` records their Figma layer IDs without temporary download URLs. Home content images are real WordPress Media Library attachments. Cropped logo and newsletter artwork preserve the crop shown in Figma.
+Approved assets are in `assets/images/phirst/`; `figma-assets.json` records their Figma layer IDs without temporary download URLs. Home content images are real WordPress Media Library attachments. Newsletter artwork preserves the crop shown in Figma.
+
+At the user's request, the partner strip uses nine individual original logos from https://phirst.nihr.ac.uk/ instead of the Figma crops. Local SVG/PNG originals and provenance are in `assets/images/phirst/partners/manifest.json`: Fuse, Bristol, LiLaC, LSBU, Hertfordshire, PHRESH, Nottingham, Northumbria and Glasgow. Each logo is a separate Media Library attachment and ACF repeater item, displayed with its full aspect ratio. Links remain optional, matching the unlinked legacy strip. The horizontal scroller supports touch, mouse dragging, keyboard navigation and an interactive progress track.
 
 ## Home content
 
@@ -39,7 +41,7 @@ Home is page ID 5 on the initial local database and contains ten ACF Flexible Co
 
 No new frontend components were needed. PHIRST variants extend the existing components; their design overrides are in `assets/styles/_phirst.scss`.
 
-There are eleven editable image fields directly on Home, plus the news posts' Featured Images. Twelve approved Figma content assets were imported, including the first news slide's approved image.
+There are fifteen editable image fields directly on Home, including the nine partner logos, plus the news posts' Featured Images. The first news slide retains its approved Figma image.
 
 There are three news posts with Featured Images and three testimonials. The first news slide retains the approved Figma artwork/copy. The news feed uses the PHIRST News category, has a pinned first post and requests three slides. Additional news slides use short summaries and link to the original full stories via the editable `externalStoryLink` ACF field. Two additional testimonials are brief excerpts from the current PHIRST site.
 
@@ -80,7 +82,9 @@ wp eval-file tools/seed-phirst-site.php
 wp eval-file tools/import-phirst-homepage.php
 ```
 
-The seed imports Figma assets, creates empty pages/menus/options and populates Home. It preserves an already seeded Home; `reset-home` explicitly restores the original design content. The homepage importer reuses existing source posts and adds the news feed and testimonial excerpts. Do not rerun either command over later editorial work without reviewing what it updates. WordPress content/uploads are not stored in Git.
+The seed imports design and partner assets, creates empty pages/menus/options and populates Home. It preserves an already seeded Home; `reset-home` explicitly restores the initial content. The homepage importer reuses existing source posts and adds the news feed and testimonial excerpts. Do not rerun either command over later editorial work without reviewing what it updates. WordPress content/uploads are not stored in Git.
+
+For an already seeded site, `wp eval-file tools/import-phirst-partners.php` replaces only the `homepagePartners` logo items and reuses imported attachments. It preserves all other Home rows. Reviewed bundled SVGs are allowed only during that CLI import; normal upload permissions are unchanged.
 
 ACF Pro 6.8.10 is installed and active locally. A separate license key was not copied from PRU; enter the PHIRST license under ACF Updates for automatic plugin updates.
 
@@ -94,6 +98,7 @@ ACF Pro 6.8.10 is installed and active locally. A separate license key was not c
 - Checked mobile menu open/close and Escape, card navigation, carousel controls and the deferred YouTube iframe. Inactive slides are inert; carousel IDs are unique per component.
 - No browser console errors were captured during final Home QA.
 - Logged into WordPress and successfully saved Home through the ACF editor; checked the ten rows and real image previews.
+- Verified all nine partner originals load locally, the last logo is reachable, mouse dragging and the progress track work, and 320/390 px mobile layouts do not cause page overflow.
 - Verified all published pages and image references; placeholders remain empty as requested.
 
 ## Content still supplied as placeholders

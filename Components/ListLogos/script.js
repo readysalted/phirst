@@ -16,6 +16,10 @@ export default function (el) {
     return Math.max(0, scroller.scrollWidth - scroller.clientWidth)
   }
 
+  function scrollBehavior () {
+    return window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
+  }
+
   function updateProgress () {
     const maxScroll = getMaxScroll()
     const isScrollable = maxScroll > 1
@@ -61,15 +65,21 @@ export default function (el) {
     dragMoved = false
     dragStartX = event.clientX
     dragStartScrollLeft = scroller.scrollLeft
-    el.dataset.dragging = 'true'
-    scroller.setPointerCapture(event.pointerId)
   }
 
   function handleScrollerPointerMove (event) {
     if (!dragging) return
 
     const distance = event.clientX - dragStartX
-    dragMoved = dragMoved || Math.abs(distance) > 4
+    if (!dragMoved && Math.abs(distance) <= 4) return
+
+    if (!dragMoved) {
+      dragMoved = true
+      el.dataset.dragging = 'true'
+      scroller.setPointerCapture(event.pointerId)
+    }
+
+    event.preventDefault()
     scroller.scrollLeft = dragStartScrollLeft - distance
   }
 
@@ -103,7 +113,7 @@ export default function (el) {
     if (nextScrollLeft === null) return
 
     event.preventDefault()
-    scroller.scrollTo({ left: nextScrollLeft, behavior: 'smooth' })
+    scroller.scrollTo({ left: nextScrollLeft, behavior: scrollBehavior() })
   }
 
   function handleProgressPointerDown (event) {
@@ -132,7 +142,7 @@ export default function (el) {
 
   function handleProgressClick (event) {
     if (event.detail === 0) {
-      scroller.scrollBy({ left: scroller.clientWidth * 0.75, behavior: 'smooth' })
+      scroller.scrollBy({ left: scroller.clientWidth * 0.75, behavior: scrollBehavior() })
     }
   }
 
@@ -141,8 +151,8 @@ export default function (el) {
   scroller.addEventListener('scroll', updateProgress, { passive: true })
   scroller.addEventListener('pointerdown', handleScrollerPointerDown)
   scroller.addEventListener('pointermove', handleScrollerPointerMove)
-  scroller.addEventListener('pointerup', handleScrollerPointerUp)
-  scroller.addEventListener('pointercancel', handleScrollerPointerUp)
+  window.addEventListener('pointerup', handleScrollerPointerUp)
+  window.addEventListener('pointercancel', handleScrollerPointerUp)
   scroller.addEventListener('click', handleScrollerClick, true)
   scroller.addEventListener('keydown', handleScrollerKeydown)
   progress.addEventListener('pointerdown', handleProgressPointerDown)
@@ -157,8 +167,8 @@ export default function (el) {
     scroller.removeEventListener('scroll', updateProgress)
     scroller.removeEventListener('pointerdown', handleScrollerPointerDown)
     scroller.removeEventListener('pointermove', handleScrollerPointerMove)
-    scroller.removeEventListener('pointerup', handleScrollerPointerUp)
-    scroller.removeEventListener('pointercancel', handleScrollerPointerUp)
+    window.removeEventListener('pointerup', handleScrollerPointerUp)
+    window.removeEventListener('pointercancel', handleScrollerPointerUp)
     scroller.removeEventListener('click', handleScrollerClick, true)
     scroller.removeEventListener('keydown', handleScrollerKeydown)
     progress.removeEventListener('pointerdown', handleProgressPointerDown)
