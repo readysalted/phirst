@@ -14,7 +14,7 @@ add_filter('login_headerurl', 'phirst_login_header_url');
  */
 function phirst_login_header_text(): string
 {
-    return 'Public Health Intervention Responsive Studies Teams (PHIRST)';
+    return 'NIHR – Public Health Intervention Responsive Studies Teams (PHIRST)';
 }
 add_filter('login_headertext', 'phirst_login_header_text');
 
@@ -58,7 +58,7 @@ function phirst_login_styles(): void
         body.login #login h1 a {
             background-color: #fff;
             background-image:
-                url('<?php echo esc_url($assetUrl . 'phirst-wordmark.png'); ?>');
+                url('<?php echo esc_url($assetUrl . 'nihr-phirst-logo.svg'); ?>');
             background-position: center;
             background-repeat: no-repeat;
             background-size: 85% auto;

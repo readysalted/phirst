@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Apply the supplied current NIHR PHIRST SVG logo to desktop/mobile navigation and the WordPress login screen, preserving its lettering with an embedded Archia font.
+
 ## 1.0.0 — 2026-10-18
 
 - Initialize PHIRST with an independent Git history from the shared PRU / Flynt component library.

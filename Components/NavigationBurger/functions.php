@@ -15,9 +15,8 @@ add_action('init', function (): void {
 add_filter('Flynt/addComponentData?name=NavigationBurger', function (array $data): array {
     $data['menu'] = Timber::get_menu('navigation_burger') ?? Timber::get_pages_menu();
     $data['logo'] = [
-        'markSrc' => Asset::requireUrl('assets/images/phirst/nihr-logo.png'),
-        'wordmarkSrc' => Asset::requireUrl('assets/images/phirst/phirst-wordmark.png'),
-        'alt' => __('Public Health Intervention Responsive Studies Teams (PHIRST)', 'flynt'),
+        'src' => Asset::requireUrl('assets/images/phirst/nihr-phirst-logo.svg'),
+        'alt' => __('NIHR – Public Health Intervention Responsive Studies Teams (PHIRST)', 'flynt'),
     ];
     $data['searchIconUrl'] = Asset::requireUrl('assets/images/phirst/search.svg');
 

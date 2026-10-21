@@ -1,6 +1,6 @@
 # PHIRST project context
 
-Last verified: 2026-10-18.
+Last verified: 2026-10-21 (logo replacement; homepage verification below was completed on 2026-10-18).
 
 ## Project
 
@@ -19,6 +19,8 @@ Figma file: https://www.figma.com/design/Ige5obtBeQJly4vc31jyTA/NIHR-PHIRST-DEV
 The approved Home is `3402:10818` (Homepage) on the `2026` page (`3402:91`). The originally supplied deep link (`3404:12115`) is an accordion on an evaluation detail example, rather than the Home frame.
 
 Design colors: Navy `#1C285E`, Brand Blue `#193E72`, Blue Flame `#0051C2`, Glove Blue `#C7E9FF`, Lilac `#C4C5FF`, Putty `#FAF4EB`, Slate `#2D2D2D`, Coral `#FC5D5D`. Headings use local Archia; body/navigation use Inclusive Sans; editorial card/news copy uses Lato.
+
+The current site logo is the SVG supplied by the user on 2026-10-21: `assets/images/phirst/nihr-phirst-logo.svg`. It replaces the previous two cropped PNGs in both navigation components and on the WordPress login screen. Its live lettering uses the theme's Archia Regular font embedded inside the SVG, so rendering does not depend on installed fonts or external font requests. The original artwork, colors and proportions are preserved.
 
 Approved assets are in `assets/images/phirst/`; `figma-assets.json` records their Figma layer IDs without temporary download URLs. Home content images are real WordPress Media Library attachments. Newsletter artwork preserves the crop shown in Figma.
 

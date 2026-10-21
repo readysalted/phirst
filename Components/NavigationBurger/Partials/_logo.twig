@@ -1,5 +1,3 @@
 <a class="logo" href="{{ site.link|e('esc_url') }}">
-  <span class="visuallyHidden">{{ logo.alt }}</span>
-  <span class="logo-mark"><img src="{{ logo.markSrc }}" alt="" aria-hidden="true" fetchpriority="high"></span>
-  <span class="logo-wordmark"><img src="{{ logo.wordmarkSrc }}" alt="" aria-hidden="true" fetchpriority="high"></span>
+  <img class="logo-image" src="{{ logo.src|e('esc_url') }}" alt="{{ logo.alt|e }}" width="1104" height="117" fetchpriority="high">
 </a>

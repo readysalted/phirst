@@ -22,32 +22,11 @@ flynt-component[name='NavigationBurger'] {
     gap: 0;
   }
 
-  .logo-mark {
-    block-size: 54px;
+  .logo-image {
+    block-size: auto;
     display: block;
-    inline-size: 175px;
-    overflow: hidden;
-
-    img {
-      block-size: 54px;
-      inline-size: 320px;
-      max-inline-size: none;
-    }
-  }
-
-  .logo-wordmark {
-    block-size: 43px;
-    display: block;
-    inline-size: 251px;
-    opacity: 0.4;
-    overflow: hidden;
-
-    img {
-      block-size: 43px;
-      inline-size: 410px;
-      max-inline-size: none;
-      transform: translateX(-159px);
-    }
+    inline-size: 426px;
+    max-inline-size: 100%;
   }
 }
 
@@ -74,25 +53,9 @@ flynt-component[name='NavigationMain'] {
 }
 
 flynt-component[name='NavigationBurger'] {
-  .logo-mark {
-    block-size: 31px;
-    inline-size: 100px;
-
-    img {
-      block-size: 31px;
-      inline-size: 184px;
-    }
-  }
-
-  .logo-wordmark {
-    block-size: 25px;
-    inline-size: 144px;
-
-    img {
-      block-size: 25px;
-      inline-size: 237px;
-      transform: translateX(-92px);
-    }
+  .logo-image {
+    inline-size: 244px;
+    max-inline-size: none;
   }
 }
 
@@ -622,25 +585,8 @@ flynt-component[name='NavigationFooter'] {
 
 @media (max-width: 380px) {
   flynt-component[name='NavigationBurger'] {
-    .logo-mark {
-      block-size: 25px;
-      inline-size: 80px;
-
-      img {
-        block-size: 25px;
-        inline-size: 148px;
-      }
-    }
-
-    .logo-wordmark {
-      block-size: 17.1px;
-      inline-size: 100px;
-
-      img {
-        block-size: 17.1px;
-        inline-size: 163.5px;
-        transform: translateX(-63.5px);
-      }
+    .logo-image {
+      inline-size: 180px;
     }
   }
 }

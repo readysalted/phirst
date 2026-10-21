@@ -335,6 +335,10 @@
     "file": "assets/nihr-logo-CtojXYyP.png",
     "src": "assets/images/phirst/nihr-logo.png"
   },
+  "assets/images/phirst/nihr-phirst-logo.svg": {
+    "file": "assets/nihr-phirst-logo-CizpGeUl.svg",
+    "src": "assets/images/phirst/nihr-phirst-logo.svg"
+  },
   "assets/images/phirst/partners/bristol.svg": {
     "file": "assets/bristol-DNU1S-i-.svg",
     "src": "assets/images/phirst/partners/bristol.svg"
@@ -512,7 +516,7 @@
     ]
   },
   "assets/main.scss": {
-    "file": "assets/main-D4koeq8N.css",
+    "file": "assets/main-33_KEQoJ.css",
     "src": "assets/main.scss",
     "isEntry": true
   },
