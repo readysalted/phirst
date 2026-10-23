@@ -34,3 +34,7 @@ wp eval-file tools/import-phirst-homepage.php
 The initial seed preserves an already configured Home. Review [PROJECT_CONTEXT.md](PROJECT_CONTEXT.md) before rerunning setup over edited content. [COMPONENTS.md](COMPONENTS.md) inventories the existing component library.
 
 To update only the partner strip on an existing seeded site, run `wp eval-file tools/import-phirst-partners.php`. The nine original logos are bundled locally and imported as separate Media Library attachments.
+
+## Legacy content migration
+
+The complete PHIRST migration is available locally: real evaluation themes, all evaluations/news, staff profiles and source documents. See [MIGRATION.md](MIGRATION.md) for setup commands, editing, validation and source-content exceptions. Database/uploads and private source exports are separate from the theme repository. Nothing has been moved to UAT.

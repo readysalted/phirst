@@ -9,6 +9,9 @@ add_action('template_redirect', function (): void {
         return;
     }
     $requestPath = wp_parse_url(wp_unslash($_SERVER['REQUEST_URI'] ?? '/'), PHP_URL_PATH);
+    if (is_singular() && wp_parse_url(get_permalink(), PHP_URL_PATH) === $requestPath) {
+        return;
+    }
     $redirects = get_option('phirst_legacy_redirects', []);
     $id = (int) ($redirects[$requestPath] ?? 0);
     if ($id && get_post_status($id) === 'publish') {

@@ -47,17 +47,15 @@ There are fifteen editable image fields directly on Home, including the nine par
 
 There are three news posts with Featured Images and three testimonials. The first news slide retains the approved Figma artwork/copy. The news feed uses the PHIRST News category, has a pinned first post and requests three slides. Additional news slides use short summaries and link to the original full stories via the editable `externalStoryLink` ACF field. Two additional testimonials are brief excerpts from the current PHIRST site.
 
-The video is the actual PHIRST introduction (`ZfOqd7JJCrY`) and loads only after Play. Newsletter signup links to the existing PHIRST signup form. Footer social links point to the verified PHIRST YouTube channel and LinkedIn page.
+The video is the actual PHIRST introduction (`ZfOqd7JJCrY`) and loads only after Play. Newsletter signup links to the local page containing the original PHIRST Mailchimp form. Footer social links point to the verified PHIRST YouTube channel and LinkedIn page.
 
 ## Pages and menus
 
-Thirteen published pages: Home plus twelve empty pages: Evaluations, Health & Care Professionals, Public Partnerships, Impact, About us, Contact, News & Events, Site Map, Privacy Policy, Cookie Policy, Terms and Accessibility.
+The full legacy content migration is now implemented locally. There are 128 published pages (including 76 evaluations and 18 theme landing pages), 18 news posts and 170 staff profiles. The approved ten-row Home and its images are retained; source content replaces Figma placeholder prose. Header/footer links target the imported source slugs, with redirects for previous local navigation URLs.
 
-Both navigation locations use the PHIRST Main menu: Evaluations, Health & Care Professionals, Public Partnerships, Impact and About us. Contact is the header CTA. Footer options contain links to the actual pages.
+Evaluations uses real source themes and automatic image tiles. Individual evaluations preserve source content, documents, theme assignments and SEO. No map or visitor filters are active. A legacy catalogue reference is saved as a draft. Interior pages have the global newsletter row; Home retains its own row.
 
-The inherited global newsletter toggle is explicitly off on seeded pages; Home has its own newsletter row. Keep it off to avoid a duplicate section. The WordPress Sample Page and Hello world post are in Trash.
-
-WordPress uses a static Home, `/%postname%/` permalinks, Europe/London and disabled search indexing for local development.
+See [MIGRATION.md](MIGRATION.md) for the source inventory, editor instructions, source gaps, repeatable migration commands and verification. WordPress remains local with search indexing disabled; UAT has not been touched.
 
 ## Development and setup
 
@@ -101,8 +99,8 @@ ACF Pro 6.8.10 is installed and active locally. A separate license key was not c
 - No browser console errors were captured during final Home QA.
 - Logged into WordPress and successfully saved Home through the ACF editor; checked the ten rows and real image previews.
 - Verified all nine partner originals load locally, the last logo is reachable, mouse dragging and the progress track work, and 320/390 px mobile layouts do not cause page overflow.
-- Verified all published pages and image references; placeholders remain empty as requested.
+- Verified all 316 unique public destination URLs and imported files after the full content migration.
 
-## Content still supplied as placeholders
+## Migration status
 
-The approved design includes Lorem ipsum in the Latest feature, audience cards, newsletter and footer, plus a sample footer address/telephone. These placeholders are retained for review. Replace them with approved content before launch. Legal pages and the remaining pages are intentionally empty. Full legacy-site migration and production deployment are not part of this initial Home implementation.
+All published source content has been imported and checked. The source Contact and Publications shortcodes were already broken; their local replacements and remaining policy-review notes are documented in [MIGRATION.md](MIGRATION.md). No Figma Lorem ipsum or sample phone/address remains in the public site. The database, uploaded files and private source snapshots are excluded from Git.

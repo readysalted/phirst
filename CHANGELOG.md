@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- Migrate all real published PHIRST evaluations, news, ordinary pages, staff profiles and referenced documents into editable Flynt components.
+- Add 18 source-based evaluation theme landing pages and automatic tile grids, without map or visitor filters; retain the legacy catalogue as a draft reference.
+- Add interior Figma styles, source SEO fields, local newsletter signup, component-text search, working navigation and source-backed placeholder replacements.
+- Add repeatable private WXR/cache import and source/HTTP verification tools; preserve the homepage layout and current branding.
+
 - Apply the supplied current NIHR PHIRST SVG logo to desktop/mobile navigation and the WordPress login screen, preserving its lettering with an embedded Archia font.
 
 ## 1.0.0 — 2026-10-18
