@@ -56,11 +56,18 @@ First back up the local database. Keep all exports, media caches and reports **o
    ```sh
    wp eval-file tools/import-phirst-content.php /absolute/private/phirst-source
    wp eval-file tools/finalize-phirst-content.php /absolute/private/phirst-source
+   wp eval-file tools/refine-phirst-professionals.php
    wp eval-file tools/verify-phirst-migration.php /absolute/private/phirst-source
    python3 tools/check-phirst-http.py /absolute/private/phirst-source
    ```
 
 The importer reuses source identities and media, avoiding duplicates. It is a migration utility, not a background sync: rerunning updates source fields, slugs, taxonomies, SEO, listings and global options. Component rows whose source hash is unchanged are preserved. Pass `reset-components` only to deliberately rebuild imported rows; run finalization afterward to restore derived contact/publication content. Finalization also updates homepage placeholder copy/URLs, footer options and the search index. Review these effects before rerunning over later editorial work.
+
+## Professionals page refinement
+
+The Health & Care Professionals page uses the existing hero, Wysiwyg and Grid Image Text components. Its source introduction is placed in the hero, editorial sections put the first H2 beside the text, and five PDF blogs are individual document cards with verified cover names, source roles and unchanged file URLs. Funding/remit paragraphs form a separate contact callout. All source text is retained and the component search index is refreshed.
+
+`tools/refine-phirst-professionals.php` applies this layout once after the import. It preserves the original rows in `_phirst_professionals_before` and skips an already refined page. `reset-layout` deliberately rebuilds from that preserved original, replacing later editorial edits; use it only after review. This does not replace other pages or global options.
 
 ## Validation and handoff
 

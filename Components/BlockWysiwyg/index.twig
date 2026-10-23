@@ -1,7 +1,12 @@
 <flynt-component name="BlockWysiwyg" class="componentSpacing" {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }} data-display-style="{{ options.displayStyle|default('default') }}">
   <div class="container">
-    <div class="content" data-size="{{ options.size }}" data-align="{{ options.align }}" data-text-align="{{ options.textAlign }}">
-      {{ contentHtml|e('wp_kses_post') }}
+    <div class="content{{ editorialHeadingHtml ? ' content-editorial' }}" data-size="{{ options.size }}" data-align="{{ options.align }}" data-text-align="{{ options.textAlign }}">
+      {% if editorialHeadingHtml %}
+        <div class="editorial-heading">{{ editorialHeadingHtml|e('wp_kses_post') }}</div>
+        <div class="editorial-body">{{ editorialBodyHtml|e('wp_kses_post') }}</div>
+      {% else %}
+        {{ contentHtml|e('wp_kses_post') }}
+      {% endif %}
     </div>
   </div>
 </flynt-component>

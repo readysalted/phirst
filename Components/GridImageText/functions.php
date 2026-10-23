@@ -191,12 +191,13 @@ function getACFLayout(): array
                             'default' => __('Default', 'flynt'),
                             'phirstCards' => __('PHIRST Audience Cards', 'flynt'),
                             'phirstTiles' => __('PHIRST interior image tiles', 'flynt'),
+                            'phirstDocuments' => __('PHIRST document cards', 'flynt'),
                             'homepageFeatures' => __('Homepage Feature Cards', 'flynt'),
                             'homepageProjects' => __('Homepage Project Cards', 'flynt'),
                             'resourceLinks' => __('Resources Link Cards', 'flynt'),
                         ],
                         'default_value' => 'default',
-                        'instructions' => __('Use the named styles only for their matching Figma sections.', 'flynt'),
+                        'instructions' => __('Use named styles for their matching content. Document cards use five columns on wide screens and stack on phones.', 'flynt'),
                     ]
                 ]
             ]

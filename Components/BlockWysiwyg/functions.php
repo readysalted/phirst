@@ -5,6 +5,15 @@ namespace Flynt\Components\BlockWysiwyg;
 use Flynt\FieldVariables;
 
 add_filter('Flynt/addComponentData?name=BlockWysiwyg', function (array $data): array {
+    if (($data['options']['displayStyle'] ?? '') === 'phirstEditorial' && preg_match('#^\s*(<h2\b[^>]*>.*?</h2>)(.*)$#si', $data['contentHtml'] ?? '', $sections)) {
+        $data['editorialHeadingHtml'] = $sections[1];
+        $data['editorialBodyHtml'] = $sections[2];
+    }
+    return $data;
+});
+
+
+add_filter('Flynt/addComponentData?name=BlockWysiwyg', function (array $data): array {
     if (!empty($data['contentHtml']) && has_shortcode($data['contentHtml'], 'wp_sitemap_page')) {
         $data['contentHtml'] = do_shortcode($data['contentHtml']);
     }
@@ -58,10 +67,13 @@ function getACFLayout(): array
                             'default' => __('Default', 'flynt'),
                             'phirstIntro' => __('PHIRST Introduction', 'flynt'),
                             'phirstArticle' => __('PHIRST interior content', 'flynt'),
+                            'phirstEditorial' => __('PHIRST editorial section', 'flynt'),
+                            'phirstCallout' => __('PHIRST contact callout', 'flynt'),
                             'phirstStatus' => __('PHIRST evaluation status', 'flynt'),
                             'homepageIntro' => __('Homepage Introduction', 'flynt'),
                         ],
                         'default_value' => 'default',
+                        'instructions' => __('Editorial sections place the first H2 beside the remaining text. Contact callouts highlight the final action.', 'flynt'),
                     ],
                 ]
             ]

@@ -25,13 +25,13 @@ All existing component folders were reviewed before implementing Home. Reuse and
 | `BlockTextImageCrop` | Available shared component |
 | `BlockTwoPages` | Available shared component |
 | `BlockVideoOembed` | Introduction video |
-| `BlockWysiwyg` | PHIRST introduction |
+| `BlockWysiwyg` | PHIRST introduction, editorial sections and contact callouts |
 | `BlockWysiwygTwoCol` | Available shared component |
 | `FeatureFlexibleContentExtension` | Available shared component |
 | `FormPasswordProtection` | Available shared component |
 | `GridEventsArchive` | Available shared component |
 | `GridHomepageResearch` | Available shared component |
-| `GridImageText` | Audience cards |
+| `GridImageText` | Audience cards, evaluation tiles and PDF document cards |
 | `GridImageText_old` | Available shared component |
 | `GridImpactRelationship` | Available shared component |
 | `GridPeople` | Available shared component |

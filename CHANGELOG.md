@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Refine the Health & Care Professionals page with an introductory hero, editorial sections, five accessible PDF cards and a contact callout, preserving all source copy and documents.
+
 - Fix breadcrumb title entity encoding, list-item alignment and wide-screen alignment with the interior hero.
 
 - Migrate all real published PHIRST evaluations, news, ordinary pages, staff profiles and referenced documents into editable Flynt components.
