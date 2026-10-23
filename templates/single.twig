@@ -1,6 +1,11 @@
 {% extends 'templates/_document.twig' %}
 
 {% block content %}
+  {% if post.meta('pageComponents') %}
+    {% for component in post.meta('pageComponents') %}
+      {{ renderComponent(component) }}
+    {% endfor %}
+  {% else %}
   <article>
     <header>
       {{ renderComponent('BlockPostHeader', {post: post}) }}
@@ -22,4 +27,5 @@
       {{ renderComponent('GridPostsLatest', {'taxonomies': post.categories(), 'options': {'theme': 'light', 'maxColumns': 3}}) }}
     </section> #}
   </article>
+  {% endif %}
 {% endblock %}

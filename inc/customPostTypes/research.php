@@ -31,7 +31,7 @@ function registerResearchPostType(): void
 
     register_post_type('research', [
         'label' => __('Projects', 'flynt'),
-        'description' => __('NIHR PRU research projects.', 'flynt'),
+        'description' => __('NIHR PHIRST research projects.', 'flynt'),
         'labels' => $labels,
         'supports' => ['title', 'revisions', 'thumbnail', 'excerpt', 'custom-fields', 'page-attributes'],
         'hierarchical' => true,

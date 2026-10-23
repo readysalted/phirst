@@ -10,7 +10,7 @@
         <li class="item boxCard">
           {% if item.image %}
             <figure class="figure figure-desktop">
-              <img src="{{ item.image.src }}" alt="{{ item.image.alt|e }}" loading="lazy">
+              <img src="{{ (item.image.src('medium_large') ?: item.image.src)|e('esc_url') }}" alt="{{ item.image.alt|e }}" loading="lazy" decoding="async">
             </figure>
           {% endif %}
           {% if maxColumns == '1' and item.imageMobile %}

@@ -1,0 +1,29 @@
+<div class="signup-intro">{{ contentHtml|e('wp_kses_post') }}</div>
+{% if hasSignupForm %}
+  <form class="signup-form" action="{{ signupForm.action|e('esc_url') }}" method="post" target="_blank" aria-label="{{ __('PHIRST newsletter signup', 'flynt') }}">
+    {% for field in signupForm.fields %}
+      {% set fieldId = formId ~ '-' ~ loop.index %}
+      <div class="signup-field">
+        <label for="{{ fieldId }}">{{ field.label|e }}{% if field.required %} <span aria-hidden="true">*</span>{% endif %}</label>
+        {% if field.type == 'select' %}
+          <select id="{{ fieldId }}" name="{{ field.name|e('html_attr') }}" {{ field.required ? 'required' }}>
+            <option value="">{{ __('Please select', 'flynt') }}</option>
+            {% for choice in field.choicesText|split("\n") %}
+              {% if choice|trim %}<option value="{{ choice|trim|e('html_attr') }}">{{ choice|trim|e }}</option>{% endif %}
+            {% endfor %}
+          </select>
+        {% else %}
+          <input id="{{ fieldId }}" type="{{ field.type == 'email' ? 'email' : 'text' }}" name="{{ field.name|e('html_attr') }}" {{ field.name == 'EMAIL' ? 'autocomplete="email"' }} {{ field.name == 'FNAME' ? 'autocomplete="given-name"' }} {{ field.name == 'LNAME' ? 'autocomplete="family-name"' }} {{ field.required ? 'required' }}>
+        {% endif %}
+      </div>
+    {% endfor %}
+    <div class="signup-privacy">{{ signupForm.consentHtml|e('wp_kses_post') }}</div>
+    {% if signupForm.consentName %}
+      <label class="signup-consent"><input type="checkbox" name="{{ signupForm.consentName|e('html_attr') }}" value="Y" required> <span>{{ signupForm.consentLabel|e }}</span></label>
+    {% endif %}
+    {% if signupForm.honeypotName %}
+      <div class="signup-honeypot" aria-hidden="true"><input type="text" name="{{ signupForm.honeypotName|e('html_attr') }}" tabindex="-1" value="" autocomplete="off"></div>
+    {% endif %}
+    <button class="button" type="submit" name="subscribe">{{ __('Subscribe', 'flynt') }}</button>
+  </form>
+{% endif %}

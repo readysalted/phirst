@@ -3,8 +3,36 @@
 namespace Flynt\Components\GridImageText;
 
 use Flynt\FieldVariables;
+use Timber\Timber;
 
 add_filter('Flynt/addComponentData?name=GridImageText', function ($data) {
+    $source = $data['dataSource'] ?? 'manual';
+    if ($source !== 'manual') {
+        $query = ['post_type' => 'page', 'post_status' => 'publish', 'posts_per_page' => -1, 'orderby' => 'title', 'order' => 'ASC'];
+        if ($source === 'evaluationThemes') {
+            $query['meta_key'] = 'phirstPageKind';
+            $query['meta_value'] = 'theme';
+        } elseif ($source === 'evaluationsInTheme') {
+            $theme = (int) (($data['evaluationTheme'] ?? 0) ?: get_post_meta(get_queried_object_id(), 'evaluationThemeTerm', true));
+            $query['meta_key'] = 'phirstPageKind';
+            $query['meta_value'] = 'evaluation';
+            $query['tax_query'] = [['taxonomy' => 'evaluation_theme', 'field' => 'term_id', 'terms' => [$theme]]];
+        } elseif ($source === 'childPages') {
+            $query['post_parent'] = (int) get_queried_object_id();
+        } elseif ($source === 'news') {
+            $query['post_type'] = 'post';
+            $query['orderby'] = 'date';
+            $query['order'] = 'DESC';
+        }
+        $data['items'] = [];
+        foreach (get_posts($query) as $entry) {
+            $data['items'][] = [
+                'image' => Timber::get_image(get_post_thumbnail_id($entry)),
+                'contentHtml' => '<h2>' . esc_html($entry->post_title) . '</h2>',
+                'link' => ['url' => get_permalink($entry), 'title' => $entry->post_title, 'target' => ''],
+            ];
+        }
+    }
     if (isset($data['options']['maxColumns'])) {
         $data['maxColumns'] = (string) $data['options']['maxColumns'];
     } else {
@@ -20,6 +48,32 @@ function getACFLayout(): array
         'name' => 'gridImageText',
         'label' => __('Grid: Image Text', 'flynt'),
         'sub_fields' => [
+            [
+                'label' => __('Content source', 'flynt'),
+                'name' => 'dataSource',
+                'type' => 'select',
+                'choices' => [
+                    'manual' => __('Manual cards', 'flynt'),
+                    'evaluationThemes' => __('All evaluation themes', 'flynt'),
+                    'evaluationsInTheme' => __('Evaluations in this theme', 'flynt'),
+                    'childPages' => __('Child pages', 'flynt'),
+                    'news' => __('All news posts', 'flynt'),
+                ],
+                'default_value' => 'manual',
+                'instructions' => __('Automatic lists reflect published content and theme assignments. There are no visitor filters.', 'flynt'),
+            ],
+            [
+                'label' => __('Evaluation theme', 'flynt'),
+                'name' => 'evaluationTheme',
+                'type' => 'taxonomy',
+                'taxonomy' => 'evaluation_theme',
+                'field_type' => 'select',
+                'allow_null' => 1,
+                'return_format' => 'id',
+                'save_terms' => 0,
+                'load_terms' => 0,
+                'instructions' => __('Leave empty to use the current theme landing page.', 'flynt'),
+            ],
             [
                 'label' => __('Content', 'flynt'),
                 'name' => 'contentTab',
@@ -136,6 +190,7 @@ function getACFLayout(): array
                         'choices' => [
                             'default' => __('Default', 'flynt'),
                             'phirstCards' => __('PHIRST Audience Cards', 'flynt'),
+                            'phirstTiles' => __('PHIRST interior image tiles', 'flynt'),
                             'homepageFeatures' => __('Homepage Feature Cards', 'flynt'),
                             'homepageProjects' => __('Homepage Project Cards', 'flynt'),
                             'resourceLinks' => __('Resources Link Cards', 'flynt'),

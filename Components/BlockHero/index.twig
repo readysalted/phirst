@@ -1,4 +1,4 @@
-<flynt-component name="BlockHero">
+<flynt-component name="BlockHero" data-display-style="{{ displayStyle|default('default') }}">
   <div class="container">
     <div class="content">
       <div class="text">
@@ -10,12 +10,20 @@
         {% endif %}
       </div>
       {% if image %}
-        <div class="image"><img src="{{ image.guid }}" alt="{{ title }}"></div>
+        <div class="image"><img src="{{ (image.src('medium_large') ?: image.src)|default(image.guid)|e('esc_url') }}" alt="{{ image.alt|default('')|e }}" width="253" height="253"></div>
       {% endif %}
     </div>
   </div>
 </flynt-component>
-{% if not hideBreadcrumb and function('function_exists', 'bcn_display') %}
+{% if displayStyle == 'phirstInterior' and breadcrumbs %}
+  <nav class="phirst-breadcrumbs container" aria-label="{{ __('Breadcrumb', 'flynt') }}">
+    <ol>
+      {% for item in breadcrumbs %}
+        <li>{% if item.url %}<a href="{{ item.url|e('esc_url') }}">{{ item.title|e }}</a>{% else %}<span aria-current="page">{{ item.title|e }}</span>{% endif %}</li>
+      {% endfor %}
+    </ol>
+  </nav>
+{% elseif not hideBreadcrumb and function('function_exists', 'bcn_display') %}
   <div class="container">
     <div class="breadcrumbs" aria-label="Breadcrumb" typeof="BreadcrumbList" vocab="https://schema.org/">
       {{ function('bcn_display') }}

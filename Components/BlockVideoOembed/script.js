@@ -5,6 +5,8 @@ export default function (el) {
     iframe: 'iframe'
   })
 
+  if (!refs.iframe || !refs.playButton) return
+
   refs.playButton.addEventListener('click', loadVideo, { once: true })
 
   function loadVideo () {
@@ -15,7 +17,7 @@ export default function (el) {
 
   function videoIsLoaded () {
     refs.videoPlayer.dataset.state = 'isLoaded'
-    refs.posterImage.dataset.state = 'isHidden'
+    if (refs.posterImage) refs.posterImage.dataset.state = 'isHidden'
   }
 
   return () => {

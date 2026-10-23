@@ -7,6 +7,11 @@ flynt-component[name='BlockVideoOembed'] {
   .video {
     position: relative;
 
+    &[data-has-poster='false'] {
+      aspect-ratio: 16 / 9;
+      background: var(--nihr-navy);
+    }
+
     &-player {
       block-size: 0;
       inline-size: 100%;

@@ -76,6 +76,7 @@ function getACFLayout()
                         'choices' => [
                             'default' => __('Default', 'flynt'),
                             'resources' => __('Resources cards', 'flynt'),
+                            'phirstOutputs' => __('PHIRST evaluation outputs', 'flynt'),
                         ],
                         'default_value' => 'default',
                     ]

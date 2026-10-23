@@ -3,15 +3,19 @@
     {% if heading %}
       <h2 class="video-heading" data-size="{{ options.size }}" data-align="center">{{ heading|e }}</h2>
     {% endif %}
-    <div class="video" data-size="{{ options.size }}" data-align="center">
+    <div class="video" data-has-poster="{{ posterImage ? 'true' : 'false' }}" data-size="{{ options.size }}" data-align="center">
       {% if posterImage %}
         {% include 'Partials/_figure.twig' ignore missing with {image: posterImage, displayStyle: options.displayStyle} only %}
       {% endif %}
+      {% if oembed %}
       <div data-ref="videoPlayer" class="video-player">
         {{ oembed }}
         <div class="video-loader"></div>
         <button data-ref="playButton" class="video-playButton" type="button" aria-label="{{ labels.videoPlayButtonAriaLabel|e }}"></button>
       </div>
+      {% elseif videoUrl %}
+        <a class="button" href="{{ videoUrl|e('esc_url') }}">{{ __('Watch video', 'flynt') }}</a>
+      {% endif %}
     </div>
     {% if button %}
       <div class="video-action" data-size="{{ options.size }}" data-align="center">

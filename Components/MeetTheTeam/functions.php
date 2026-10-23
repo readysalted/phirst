@@ -89,6 +89,7 @@ function getACFLayout(): array
                         'choices' => [
                             'default' => __('Default', 'flynt'),
                             'homepageTeam' => __('Homepage Team', 'flynt'),
+                            'phirstTeam' => __('PHIRST research team', 'flynt'),
                             'capacityDevelopment' => __('Capacity Development Opportunities', 'flynt'),
                         ],
                         'default_value' => 'default',

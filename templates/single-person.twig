@@ -1,6 +1,11 @@
 {% extends 'templates/_document.twig' %}
 
 {% block content %}
+  {% if post.meta('pageComponents') %}
+    {% for component in post.meta('pageComponents') %}
+      {{ renderComponent(component) }}
+    {% endfor %}
+  {% else %}
   <article class="personProfile">
     {{ renderComponent('BlockPostHeader', {
       type: 'custom',
@@ -29,5 +34,6 @@
       </div>
     </div>
   </article>
+  {% endif %}
 {% endblock %}
 

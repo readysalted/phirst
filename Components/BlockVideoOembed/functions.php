@@ -7,8 +7,19 @@ use Flynt\Utils\Oembed;
 use Flynt\Utils\Options;
 
 add_filter('Flynt/addComponentData?name=BlockVideoOembed', function (array $data): array {
+    $embed = (string) ($data['oembed'] ?? '');
+    if (!str_contains($embed, '<iframe') && !empty($data['videoUrl'])) {
+        $url = $data['videoUrl'];
+        $id = '';
+        if (preg_match('#^https?://(?:www\.)?(?:youtube\.com/watch\?v=|youtu\.be/)([a-zA-Z0-9_-]{11})(?:[?&#/]|$)#', $url, $match)) {
+            $id = $match[1];
+        }
+        if ($id) {
+            $embed = '<iframe src="https://www.youtube-nocookie.com/embed/' . esc_attr($id) . '" title="' . esc_attr__('PHIRST video', 'flynt') . '" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';
+        }
+    }
     $data['oembed'] = Oembed::setSrcAsDataAttribute(
-        $data['oembed'],
+        $embed,
         [
             'autoplay' => 'true'
         ]
@@ -43,7 +54,7 @@ function getACFLayout(): array
                 'type' => 'image',
                 'preview_size' => 'medium',
                 'mime_types' => 'jpg,jpeg,png,svg,webp',
-                'required' => 1,
+                'required' => 0,
             ],
             [
                 'label' => __('Video', 'flynt'),
@@ -53,6 +64,12 @@ function getACFLayout(): array
                 'videoParams' => [
                     'autoplay' => 1,
                 ]
+            ],
+            [
+                'name' => 'videoUrl',
+                'label' => __('Original video URL', 'flynt'),
+                'type' => 'url',
+                'instructions' => __('Fallback link when the video provider does not return an embed.', 'flynt'),
             ],
             [
                 'label' => __('Button', 'flynt'),

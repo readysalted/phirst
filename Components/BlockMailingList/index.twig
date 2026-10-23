@@ -1,5 +1,8 @@
-<flynt-component name="BlockMailingList" class="componentSpacing {{ spacing ? spacing : '' }}"{{ options.backgroundColor and options.displayStyle != 'homepage' ? 'style="background-color: ' ~ options.backgroundColor ~ ';"' }} {{ backgroundColor ? 'style="background-color: ' ~ backgroundColor ~ ';"' }}  {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }} data-display-style="{{ options.displayStyle|default('default') }}">
+<flynt-component name="BlockMailingList" class="componentSpacing {{ spacing ? spacing : '' }}"{{ options.backgroundColor and options.displayStyle not in ['homepage', 'signupForm'] ? 'style="background-color: ' ~ options.backgroundColor ~ ';"' }} {{ backgroundColor ? 'style="background-color: ' ~ backgroundColor ~ ';"' }}  {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }} data-display-style="{{ options.displayStyle|default('default') }}">
   <div class="container" {{ imagePosition ? 'data-image-position="' ~ imagePosition ~ '"' }}>
+    {% if options.displayStyle == 'signupForm' %}
+      {% include 'Partials/_signupForm.twig' %}
+    {% else %}
     {% if image %}
       <figure class="figure" data-size="medium" data-align="center">
         {% if image.isThemeAsset %}
@@ -38,5 +41,6 @@
     <div data-size="medium" class="content" data-align="center">
       {{ contentHtml|e('wp_kses_post') }}
     </div>
+    {% endif %}
   </div>
 </flynt-component>
