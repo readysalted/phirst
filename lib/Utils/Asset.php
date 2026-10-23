@@ -102,7 +102,8 @@ class Asset
      */
     public static function isHotModuleReplacement(): bool
     {
-        return file_exists(self::viteHotFile());
+        return in_array(wp_get_environment_type(), ['local', 'development'], true)
+            && file_exists(self::viteHotFile());
     }
 
     /**

@@ -1,6 +1,6 @@
 # PHIRST content migration
 
-The legacy PHIRST website is the content authority. Figma supplies layout and styling, not theme names or placeholder copy. This migration remains local; nothing has been deployed to UAT or production.
+The legacy PHIRST website is the content authority. Figma supplies layout and styling, not theme names or placeholder copy. The complete local site was cloned by the user to https://phirst.readysalteddev.co.uk/ on 2026-10-23. UAT uses the `staging` environment with indexing disabled; production has not been changed. See the deployment notes in [README.md](README.md).
 
 ## Imported content
 
@@ -76,4 +76,5 @@ The Health & Care Professionals page uses the existing hero, Wysiwyg and Grid Im
 - Catalogue and evaluation saved successfully through the ACF editor; all three selected themes on the sampled evaluation survived saving.
 - Browser checks cover 320, 390, 768, 1024, 1280 and 1728 px, including the automatic theme grid, output accordion, mobile menu, deferred video and body-text search. No horizontal page overflow was observed.
 - Targeted PHPCS, Stylelint and JavaScript Standard checks and production Vite build pass. The inherited repository-wide lint baseline is unchanged.
-- The full source WXR/cache and before/after SQL snapshots remain outside Git. WordPress database and uploads are required for any later UAT transfer; cloning the theme alone does not transfer content.
+- The full source WXR/cache and before/after SQL snapshots remain outside Git. WordPress database and uploads are required for site transfers; cloning the theme alone does not transfer content.
+- UAT verification on 2026-10-23: all 316 published page/news/profile URLs and 669 rendered asset/document URLs return HTTP 200, with no local dev URLs, insecure asset URLs or PHP/Twig fatal output. All 571 attachment originals and every production manifest entry exist. The 316 pages retain `noindex`; browser checks cover desktop rendering, mobile navigation, evaluation tiles, professionals PDF links and testimonial controls. The local Vite environment remains enabled.

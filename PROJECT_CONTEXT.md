@@ -1,11 +1,12 @@
 # PHIRST project context
 
-Last verified: 2026-10-21 (logo replacement; homepage verification below was completed on 2026-10-18).
+Last verified: 2026-10-23 (UAT migration repair; content migration and professionals page refinement).
 
 ## Project
 
 - Theme and repository root: `app/public/wp-content/themes/phirst` inside the Local site.
 - Site: http://phirst.local/
+- UAT: https://phirst.readysalteddev.co.uk/ (`staging`, search indexing disabled).
 - Repository: git@github-readysalted:readysalted/phirst.git, branch `main`.
 - Independent Git history, initialized for PHIRST. PRU Git metadata and old migration scripts are outside this repository.
 - Stack: Flynt 2.1.1, Timber 2, Twig 3, ACF Pro, Vite 5, PHP >=8.1 and Node >=20.
@@ -55,7 +56,7 @@ The full legacy content migration is now implemented locally. There are 128 publ
 
 Evaluations uses real source themes and automatic image tiles. Individual evaluations preserve source content, documents, theme assignments and SEO. No map or visitor filters are active. A legacy catalogue reference is saved as a draft. Interior pages have the global newsletter row; Home retains its own row.
 
-See [MIGRATION.md](MIGRATION.md) for the source inventory, editor instructions, source gaps, repeatable migration commands and verification. WordPress remains local with search indexing disabled; UAT has not been touched.
+See [MIGRATION.md](MIGRATION.md) for the source inventory, editor instructions, source gaps, repeatable migration commands and verification. The user cloned the site to UAT with a migration plugin on 2026-10-23. Its copied Vite hot marker was removed, WordPress was set to `staging`, and SiteGround's dynamic cache was purged. Local and UAT search indexing remain disabled.
 
 ## Development and setup
 
@@ -65,7 +66,7 @@ npm install
 npm start
 ```
 
-`vite.config.js` points to `http://phirst.local/`. Vite is served on `http://localhost:5173/`; open the WordPress URL. Its CORS origin is restricted to the local WordPress origin. `dist/hot` is ignored by Git.
+`vite.config.js` points to `http://phirst.local/`. Vite is served on `http://localhost:5173/`; open the WordPress URL. Its CORS origin is restricted to the local WordPress origin. `dist/hot` is ignored by Git and must be excluded from migration archives. Vite is enabled only for `local` or `development` WordPress environments; UAT and production always use compiled assets.
 
 Production:
 

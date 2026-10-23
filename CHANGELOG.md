@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Restrict Vite hot-module assets to local/development environments so migration-plugin copies cannot make UAT or production load resources from localhost. Document UAT setup and hosting-cache cleanup.
+
 - Refine the Health & Care Professionals page with an introductory hero, editorial sections, five accessible PDF cards and a contact callout, preserving all source copy and documents.
 
 - Fix breadcrumb title entity encoding, list-item alignment and wide-screen alignment with the interior hero.
