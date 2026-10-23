@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Fix breadcrumb title entity encoding, list-item alignment and wide-screen alignment with the interior hero.
+
 - Migrate all real published PHIRST evaluations, news, ordinary pages, staff profiles and referenced documents into editable Flynt components.
 - Add 18 source-based evaluation theme landing pages and automatic tile grids, without map or visitor filters; retain the legacy catalogue as a draft reference.
 - Add interior Figma styles, source SEO fields, local newsletter signup, component-text search, working navigation and source-backed placeholder replacements.

@@ -128,7 +128,12 @@ function phirst_content_breadcrumbs(int $postId): array
         }
     }
     $items[] = ['title' => get_the_title($postId), 'url' => ''];
-    return $items;
+    // WordPress title filters encode punctuation. Twig escapes the plain labels
+    // once at output, so decode entities here rather than rendering raw HTML.
+    return array_map(static function (array $item): array {
+        $item['title'] = html_entity_decode(wp_strip_all_tags($item['title']), ENT_QUOTES | ENT_HTML5, 'UTF-8');
+        return $item;
+    }, $items);
 }
 
 add_action('pre_get_posts', function (WP_Query $query): void {

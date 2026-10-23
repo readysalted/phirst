@@ -17,9 +17,12 @@
 </flynt-component>
 {% if displayStyle == 'phirstInterior' and breadcrumbs %}
   <nav class="phirst-breadcrumbs container" aria-label="{{ __('Breadcrumb', 'flynt') }}">
-    <ol>
+    <ol class="phirst-breadcrumbs-list">
       {% for item in breadcrumbs %}
-        <li>{% if item.url %}<a href="{{ item.url|e('esc_url') }}">{{ item.title|e }}</a>{% else %}<span aria-current="page">{{ item.title|e }}</span>{% endif %}</li>
+        <li class="phirst-breadcrumbs-item">
+          {% if not loop.first %}<span class="phirst-breadcrumbs-separator" aria-hidden="true">›</span>{% endif %}
+          {% if item.url %}<a href="{{ item.url|e('esc_url') }}">{{ item.title|e }}</a>{% else %}<span aria-current="page">{{ item.title|e }}</span>{% endif %}
+        </li>
       {% endfor %}
     </ol>
   </nav>

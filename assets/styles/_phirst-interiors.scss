@@ -83,9 +83,11 @@ flynt-component[name='BlockHero'][data-display-style='phirstInterior'] {
 .phirst-breadcrumbs {
   font-size: 14px;
   line-height: 1.6;
+  max-inline-size: calc(1440px + var(--container-spacing) * 2);
   padding-block: 20px;
 
-  ol {
+  .phirst-breadcrumbs-list {
+    align-items: baseline;
     display: flex;
     flex-wrap: wrap;
     gap: 6px 12px;
@@ -94,14 +96,24 @@ flynt-component[name='BlockHero'][data-display-style='phirstInterior'] {
     padding: 0;
   }
 
-  li {
-    display: inline;
-    overflow-wrap: anywhere;
+  .phirst-breadcrumbs-item {
+    align-items: baseline;
+    display: flex;
+    gap: 12px;
+    margin: 0;
+    max-inline-size: 100%;
+    min-inline-size: 0;
+    padding: 0;
 
-    + li::before {
-      content: '›';
-      margin-inline-end: 12px;
+    > a,
+    > span {
+      min-inline-size: 0;
+      overflow-wrap: anywhere;
     }
+  }
+
+  .phirst-breadcrumbs-separator {
+    flex: none;
   }
 
   a {
