@@ -1,7 +1,7 @@
 flynt-component[name='BlockWysiwyg'] {
   h1, h2, h3, h4, h5, h6,
   .h1, .h2, .h3, .h4, .h5, .h6 {
-    color: var(--color-accent);
+    color: var(--color-heading);
   }
 
   .wysiwygActions {
@@ -129,7 +129,7 @@ flynt-component[name='BlockWysiwyg'][data-display-style='homepageIntro'] {
   }
 
   h2 {
-    color: var(--nihr-navy);
+    color: var(--color-heading);
     font-family: var(--font-family-text);
     font-size: 40px;
     font-weight: 700;

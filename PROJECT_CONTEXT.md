@@ -1,6 +1,6 @@
 # PHIRST project context
 
-Last verified: 2026-10-23 (UAT migration repair; content migration and professionals page refinement).
+Last verified: 2026-10-29 (shared component heading colors and image corners on UAT).
 
 ## Project
 
@@ -21,6 +21,10 @@ The approved Home is `3402:10818` (Homepage) on the `2026` page (`3402:91`). The
 
 Design colors: Navy `#1C285E`, Brand Blue `#193E72`, Blue Flame `#0051C2`, Glove Blue `#C7E9FF`, Lilac `#C4C5FF`, Putty `#FAF4EB`, Slate `#2D2D2D`, Coral `#FC5D5D`. Headings use local Archia; body/navigation use Inclusive Sans; editorial card/news copy uses Lato.
 
+The client's 2026-10-29 component review updates the heading treatment: `--color-heading` is black on light/pastel backgrounds and white on dark backgrounds, independent of `--color-accent`. Content image corners use `--phirst-image-radius: 12px`; partner logos, interface icons and circular team portraits retain their existing shapes. Shared media rules are in `assets/styles/_phirst-components.scss`, with component-specific clipping wrappers using the same token.
+
+The client's component showcase is UAT draft page 1214. A local QA copy is draft page 1213 (`_phirst_component_qa_source=1214`). Its current 17 rows were copied for testing; neither draft is public. During the UAT style deployment only theme files were changed, and the client's draft fields/status were verified unchanged.
+
 The current site logo is the SVG supplied by the user on 2026-10-21: `assets/images/phirst/nihr-phirst-logo.svg`. It replaces the previous two cropped PNGs in both navigation components and on the WordPress login screen. Its live lettering uses the theme's Archia Regular font embedded inside the SVG, so rendering does not depend on installed fonts or external font requests. The original artwork, colors and proportions are preserved.
 
 Approved assets are in `assets/images/phirst/`; `figma-assets.json` records their Figma layer IDs without temporary download URLs. Home content images are real WordPress Media Library attachments. Newsletter artwork preserves the crop shown in Figma.
@@ -28,6 +32,8 @@ Approved assets are in `assets/images/phirst/`; `figma-assets.json` records thei
 At the user's request, the partner strip uses nine individual original logos from https://phirst.nihr.ac.uk/ instead of the Figma crops. Local SVG/PNG originals and provenance are in `assets/images/phirst/partners/manifest.json`: Fuse, Bristol, LiLaC, LSBU, Hertfordshire, PHRESH, Nottingham, Northumbria and Glasgow. Each logo is a separate Media Library attachment and ACF repeater item, displayed with its full aspect ratio. Links remain optional, matching the unlinked legacy strip. The horizontal scroller supports touch, mouse dragging, keyboard navigation and an interactive progress track.
 
 ## Home content
+
+The ten-row inventory below describes the original local homepage. UAT has subsequent client edits (nine homepage rows on 2026-10-29, including removal of the testimonial row). Treat UAT editorial content as authoritative during further theme deployments; do not overwrite its database from the older local copy.
 
 Home is page ID 5 on the initial local database and contains ten ACF Flexible Content rows:
 
@@ -90,6 +96,8 @@ For an already seeded site, `wp eval-file tools/import-phirst-partners.php` repl
 ACF Pro 6.8.10 is installed and active locally. A separate license key was not copied from PRU; enter the PHIRST license under ACF Updates for automatic plugin updates.
 
 ## Verification
+
+- 2026-10-29: production build and targeted shared-style lint passed; comparison against the inherited lint baseline found no new findings. All 67 compiled button/default/hover/focus rules are unchanged. UAT draft 1214 was checked at 320, 390, 768 and 1440 px with no horizontal overflow, black light-background headings and 12px content image corners. Gallery navigation, accordion expansion, mobile navigation, the homepage, evaluation tiles and professionals PDF cards were checked. Dark hero/callout headings remain white, partner logos remain square and team portraits remain circular. The client draft's field checksum/status is unchanged, anonymous preview returns 404, all production manifest files exist, and indexing remains disabled. Before-deploy source/build backup is outside the web root on UAT.
 
 - Production Vite build passed, including the shared Swiper components.
 - Targeted Stylelint, JavaScript Standard and PHPCS checks passed for the new/changed implementation.

@@ -9,7 +9,7 @@ flynt-component[name='BlockMailingList'] {
   }
 
   h2 {
-    color: var(--color-accent);
+    color: var(--color-heading);
     font-size: 40px;
     font-style: normal;
     font-weight: 700;
@@ -146,7 +146,7 @@ flynt-component[name='BlockMailingList'][data-display-style='homepage'] {
     text-align: left;
 
     h2 {
-      color: #193e72;
+      color: var(--color-heading);
       font-family: var(--font-family-text);
       font-size: 40px;
       font-weight: 700;

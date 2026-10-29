@@ -57,7 +57,7 @@ flynt-component[name='BlockPostTabs'] {
     }
 
     h2 {
-      color: var(--color-text);
+      color: var(--color-heading);
       font-size: 40px;
       font-style: normal;
       font-weight: 700;
@@ -68,7 +68,7 @@ flynt-component[name='BlockPostTabs'] {
       flex-basis: 45%;
 
       .tab-image {
-        border-radius: 8px;
+        border-radius: var(--phirst-image-radius);
         object-fit: contain;
         width: 100%;
         @media (min-width: $breakpoint-tablet-horizontal) {
@@ -225,7 +225,7 @@ flynt-component[name='BlockPostTabs'][data-display-style='homepage'] {
     padding: 37px 44px 42px;
 
     h2 {
-      color: var(--nihr-navy);
+      color: var(--color-heading);
       flex-basis: 100%;
       font-family: var(--font-family-text);
       font-size: 40px;
@@ -248,7 +248,7 @@ flynt-component[name='BlockPostTabs'][data-display-style='homepage'] {
 
     .tab-image {
       aspect-ratio: 1.5;
-      border-radius: 8px;
+      border-radius: var(--phirst-image-radius);
       height: auto;
       max-height: none;
       max-width: none;
@@ -263,7 +263,7 @@ flynt-component[name='BlockPostTabs'][data-display-style='homepage'] {
     min-width: 0;
 
     .tab-title {
-      color: var(--nihr-navy);
+      color: var(--color-heading);
       font-family: var(--font-family-text);
       font-size: 32px;
       font-weight: 700;

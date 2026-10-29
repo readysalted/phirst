@@ -50,7 +50,7 @@ flynt-component[name='MeetTheTeam'] {
       font: 20px;
       line-height: 120%;
       font-weight: 700;
-      color: #3F3D3D;
+      color: var(--color-heading);
     }
   }
   .content {
@@ -87,7 +87,7 @@ flynt-component[name='MeetTheTeam'][data-display-style='capacityDevelopment'] {
     }
 
     h2 {
-      color: var(--nihr-navy);
+      color: var(--color-heading);
       font-family: var(--font-family-text);
       font-size: 40px;
       font-weight: 700;
@@ -132,7 +132,7 @@ flynt-component[name='MeetTheTeam'][data-display-style='capacityDevelopment'] {
   }
 
   .item .h5 {
-    color: #3f3d3d;
+    color: var(--color-heading);
     font-family: var(--font-family-text);
     font-size: 20px;
     font-weight: 700;
@@ -196,7 +196,7 @@ flynt-component[name='MeetTheTeam'][data-display-style='homepageTeam'] {
     margin-block-end: 34px;
 
     h2 {
-      color: #000;
+      color: var(--color-heading);
       font-family: var(--font-family-text);
       font-size: 40px;
       font-weight: 700;
@@ -230,7 +230,7 @@ flynt-component[name='MeetTheTeam'][data-display-style='homepageTeam'] {
   }
 
   .item .h5 {
-    color: #3f3d3d;
+    color: var(--color-heading);
     font-family: var(--font-family-text);
     font-size: 20px;
     font-weight: 700;

@@ -127,7 +127,7 @@ flynt-component[name='BlockImageText'][data-display-style='homepageFeature'] {
   }
 
   h2 {
-    color: inherit;
+    color: var(--color-heading);
     font-family: var(--font-family-text);
     font-size: 40px;
     font-weight: 700;
@@ -136,7 +136,7 @@ flynt-component[name='BlockImageText'][data-display-style='homepageFeature'] {
   }
 
   h3 {
-    color: inherit;
+    color: var(--color-heading);
     font-family: var(--font-family-text);
     font-size: 36px;
     font-weight: 700;
@@ -173,7 +173,7 @@ flynt-component[name='BlockImageText'][data-display-style='homepageFeature'] {
   &[data-theme='navy'] {
     h2,
     h3 {
-      color: var(--color-white);
+      color: var(--color-heading);
     }
 
     .button {
@@ -187,6 +187,7 @@ flynt-component[name='BlockImageText'][data-display-style='homepageFeature'] {
     padding-block: 102px;
 
     .wrapper {
+      --color-heading: #000;
       background: var(--color-white);
       border-radius: 8px;
       box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
@@ -198,7 +199,7 @@ flynt-component[name='BlockImageText'][data-display-style='homepageFeature'] {
 
     h2,
     h3 {
-      color: var(--nihr-navy);
+      color: var(--color-heading);
     }
   }
 

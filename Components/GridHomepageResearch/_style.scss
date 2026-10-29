@@ -9,7 +9,7 @@ flynt-component[name='GridHomepageResearch'] {
   }
 
   h2 {
-    color: inherit;
+    color: var(--color-heading);
     font-family: var(--font-family-text);
     font-size: 40px;
     font-weight: 700;

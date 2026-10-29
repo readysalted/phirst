@@ -10,7 +10,7 @@ flynt-component[name='AccordionDefault'] {
     padding-block-end: var(--flow-space);
 
     .title {
-      color: var(--color-text);
+      color: var(--color-heading);
       font-weight: 400;
     }
 
@@ -114,7 +114,7 @@ flynt-component[name='AccordionDefault'][data-display-style='resources'] {
     }
 
     .title {
-      color: var(--nihr-brand-blue);
+      color: var(--color-heading);
       font-family: var(--font-family-text);
       font-size: 32px;
       font-weight: 700;

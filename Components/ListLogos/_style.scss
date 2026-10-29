@@ -4,7 +4,7 @@ flynt-component[name='ListLogos'] {
   }
 
   h2 {
-    color: #1c285e;
+    color: var(--color-heading);
     font-size: 40px;
     font-style: normal;
     font-weight: 700;

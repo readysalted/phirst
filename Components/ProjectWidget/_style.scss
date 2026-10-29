@@ -60,7 +60,7 @@ flynt-component[name='ProjectWidget'] {
       }
 
       h3 {
-        color: #333;
+        color: var(--color-heading);
         font-size: 16px;
         font-weight: 600;
         margin: 0 0 10px;

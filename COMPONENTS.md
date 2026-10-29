@@ -2,6 +2,8 @@
 
 All existing component folders were reviewed before implementing Home. Reuse and extend these components before introducing a new component.
 
+Shared presentation uses `--color-heading` for black headings on light/pastel backgrounds and white headings on dark backgrounds. Set this token on a custom dark section or a light panel nested inside a dark section, rather than changing the button/link accent. Content images use `--phirst-image-radius: 12px`, including clipping wrappers, galleries and video posters; logos, interface icons and circular team portraits retain their shapes. The shared media rules live in `assets/styles/_phirst-components.scss`.
+
 | Component | PHIRST homepage use |
 | --- | --- |
 | `AccordionDefault` | Available shared component |

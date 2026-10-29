@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Standardize content images on a shared 12px radius and use black headings on light/pastel backgrounds, retaining white headings on dark sections and circular team portraits. Keep heading colors independent of button/link accents.
+
 - Restrict Vite hot-module assets to local/development environments so migration-plugin copies cannot make UAT or production load resources from localhost. Document UAT setup and hosting-cache cleanup.
 
 - Refine the Health & Care Professionals page with an introductory hero, editorial sections, five accessible PDF cards and a contact callout, preserving all source copy and documents.

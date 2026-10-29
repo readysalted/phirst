@@ -37,7 +37,7 @@ flynt-component[name='BlockImageTextHero'] {
   }
   .figure {
     flex-basis: 25%;
-    border-radius: 8px;
+    border-radius: var(--phirst-image-radius);
     overflow: hidden;
 
     img {
@@ -96,7 +96,7 @@ flynt-component[name='BlockImageTextHero'][data-display-style='homepage'] {
     text-align: left;
 
     h1 {
-      color: var(--color-white);
+      color: var(--color-heading);
       font-family: var(--font-family-heading);
       font-size: clamp(3.25rem, 4.05vw, 4.375rem);
       font-weight: 900;
@@ -119,7 +119,7 @@ flynt-component[name='BlockImageTextHero'][data-display-style='homepage'] {
   .figure {
     aspect-ratio: 1;
     background: rgba(196, 196, 196, 0.4);
-    border-radius: 16px;
+    border-radius: var(--phirst-image-radius);
     display: flex;
     flex-basis: auto;
     justify-self: end;

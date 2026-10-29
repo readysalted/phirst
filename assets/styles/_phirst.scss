@@ -76,7 +76,7 @@ flynt-component[name='BlockImageTextHero'][data-display-style='homepage'] {
   }
 
   .figure {
-    border-radius: 12px;
+    border-radius: var(--phirst-image-radius);
   }
 
   @media (max-width: 1024px) {
@@ -137,7 +137,7 @@ flynt-component[name='BlockImageText'][data-display-style='phirstLatest'] {
 
   .figure {
     aspect-ratio: 1;
-    border-radius: 12px;
+    border-radius: var(--phirst-image-radius);
     inline-size: 100%;
     margin-block: 6px 0;
     margin-inline: 0;
@@ -178,7 +178,7 @@ flynt-component[name='BlockImageText'][data-display-style='phirstLatest'] {
   }
 
   h2 {
-    color: var(--nihr-navy);
+    color: var(--color-heading);
     font-family: var(--font-family-text);
     font-size: 36px;
     line-height: 1.4;
@@ -235,7 +235,7 @@ flynt-component[name='BlockWysiwyg'][data-display-style='phirstIntro'] {
   }
 
   h2 {
-    color: var(--nihr-navy);
+    color: var(--color-heading);
     font-family: var(--font-family-text);
     font-size: 40px;
     line-height: 1.4;
@@ -352,7 +352,7 @@ flynt-component[name='GridImageText'][data-display-style='phirstCards'] {
   }
 
   h2 {
-    color: var(--nihr-navy);
+    color: var(--color-heading);
     font-family: var(--font-family-text);
     font-size: 30px;
     line-height: 1.4;

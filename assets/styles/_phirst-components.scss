@@ -1,0 +1,43 @@
+// Shared media treatment; logos and circular team portraits retain their shapes.
+main flynt-component:not([name='ListLogos']):not([name='MeetTheTeam']) {
+  .figure img,
+  .card-image,
+  .resourceCard-image img,
+  .peopleGrid-image img,
+  .projectsGrid-image img,
+  .tab-image,
+  .post-image,
+  .event-image {
+    border-radius: var(--phirst-image-radius);
+  }
+}
+
+flynt-component[name='BlockTwoPages'] .image img,
+flynt-component[name='GridResearchLanding'] .image img,
+flynt-component[name='GridResearchArchive'] .image img {
+  border-radius: var(--phirst-image-radius);
+}
+
+// White news panels stay readable inside a dark component theme.
+flynt-component[name='BlockPostTabs'] .tabcontent:not(.quote) {
+  --color-heading: #000;
+}
+
+flynt-component[name='BlockWysiwyg'],
+flynt-component[name='BlockWysiwygTwoCol'],
+flynt-component[name='AccordionDefault'] {
+  .content img {
+    border-radius: var(--phirst-image-radius);
+  }
+}
+
+flynt-component[name='BlockHero'] .image,
+flynt-component[name='SliderImageGallery'] .sliderMain,
+flynt-component[name='BlockVideoOembed'] .video {
+  border-radius: var(--phirst-image-radius);
+  overflow: hidden;
+}
+
+flynt-component[name='AccordionDefault'] .trigger {
+  color: var(--color-heading);
+}

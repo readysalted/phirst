@@ -1,5 +1,6 @@
 /* stylelint-disable selector-max-compound-selectors */
 flynt-component[name='NavigationFooter'] {
+  --color-heading: var(--color-white);
   background: var(--nihr-navy);
   color: var(--color-white);
   font-family: var(--font-family-text);
@@ -38,7 +39,7 @@ flynt-component[name='NavigationFooter'] {
   }
 
   h4 {
-    color: var(--color-white);
+    color: var(--color-heading);
     font-family: var(--font-family-text);
     font-size: 24px;
     font-weight: 700;
